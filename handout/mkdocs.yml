@@ -1,0 +1,75 @@
+site_name: Aulas — Insper AI
+site_description: Material de apoio para as aulas de Inteligência Artificial
+site_author: Professor
+
+theme:
+  name: material
+  language: pt
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Modo escuro
+    - scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - content.code.copy
+    - toc.integrate
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - js/katex-config.js
+
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+nav:
+  - Início: index.md
+  - "Aula 0 — Fundamentos":
+      - Introdução: aula-00/introducao.md
+      - "1. Python e NumPy": aula-00/python_numpy.md
+      - "2. Estatística e Probabilidade": aula-00/estatistica.md
+      - "3. Aprofundamento": aula-00/aprofundamento.md
+      - "4. Atividades": aula-00/atividades.md
+  - "Aula 1 — Regressão Linear":
+      - "Exposição Teórica":
+          - "Visão Geral": aula-01/index.md
+          - "Teoria": aula-01/teoria.md
+      - "Estudo de Caso":
+          - "1. Exploração dos Dados": aula-01/exploracao.md
+          - "2. Outliers e Dados Suspeitos": aula-01/outliers.md
+          - "3. Treinando o Modelo": aula-01/treinamento.md
+          - "4. Atividades": aula-01/atividades.md
