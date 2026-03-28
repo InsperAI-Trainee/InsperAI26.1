@@ -19,8 +19,8 @@ jobs:
           python-version: "3.11"
 
       - name: Instalar dependências
-        run: |
-          pip install mkdocs-material
+        run: pip install mkdocs-material
 
       - name: Deploy
+        working-directory: handout
         run: mkdocs gh-deploy --force
