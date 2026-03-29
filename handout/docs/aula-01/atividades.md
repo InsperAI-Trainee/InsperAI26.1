@@ -1,99 +1,138 @@
-# ✏️ Atividades
+# ✏️ Atividades — Aula 00
 
-Coloque em prática o que foi visto em aula. Tente resolver cada exercício antes de olhar a dica.
+Exercícios para fixar os conceitos da introdução. Não há código aqui — o objetivo é garantir que os fundamentos conceituais estejam sólidos antes de avançar.
 
 ---
 
-## Atividade 1 — Explorando as Estatísticas
+## 1. ML vs. Programação Tradicional
 
-Rode `.describe()` no dataset e responda:
+Um desenvolvedor precisa construir um sistema que identifica se uma transação bancária é fraudulenta ou não. Ele tem acesso a 2 milhões de transações históricas, cada uma já classificada como fraude ou legítima.
 
-1. Qual variável tem o maior valor de `max` em relação ao seu `75%`? O que isso sugere?
-2. A média (`mean`) de `AveRooms` é maior ou menor que a mediana (`50%`)? O que isso diz sobre a distribuição?
-3. Qual coluna tem o menor desvio padrão (`std`) relativo à sua média?
+a) Por que essa situação é um caso claro para Machine Learning em vez de programação tradicional?  
+b) Qual seria o problema de tentar escrever regras manuais para esse sistema?  
+c) Se o comportamento dos fraudadores mudar ao longo do tempo, o que precisa acontecer com o modelo?
 
 ??? tip "Dica"
-    Para a questão 1, calcule a razão `max / 75%` para cada coluna. Razões muito altas indicam presença de outliers extremos.
+    Regras manuais quebram quando o problema tem muitas variações possíveis ou quando o padrão muda com o tempo. Em ML, a solução é retreinar o modelo com dados novos — as regras são atualizadas automaticamente.
 
 ---
 
-## Atividade 2 — Investigando Outliers
+## 2. Classificando tipos de aprendizado
 
-Complete o código abaixo para identificar blocos com `AveRooms` acima do percentil 99:
+Para cada situação abaixo, identifique o tipo de aprendizado mais adequado e justifique:
 
-```python
-threshold = df["AveRooms"].quantile(___)
-
-extremos = df[df["AveRooms"] > threshold]
-print(f"Blocos com AveRooms no top 1%: {len(extremos)}")
-extremos[["AveRooms", "AveBedrms", "Population", "MedHouseVal"]].head(10)
-```
-
-Após identificar, reflita: faz sentido um domicílio ter 50, 100 ou 141 cômodos?  
-Que tipo de estabelecimento poderia gerar esses valores?
+a) Um e-commerce quer agrupar seus clientes em perfis de comportamento de compra, sem ter definido os grupos com antecedência.  
+b) Um hospital quer prever se um paciente vai desenvolver diabetes com base no seu histórico clínico. Ele tem 50.000 prontuários com diagnósticos confirmados.  
+c) Uma empresa quer treinar um robô para navegar num armazém desviando de obstáculos, sem programar explicitamente cada movimento.  
+d) Uma plataforma de streaming quer detectar músicas com características sonoras semelhantes para criar playlists automáticas.
 
 ??? tip "Dica"
-    Substitua `___` por `0.99`. Lembre que `quantile(0.99)` retorna o valor abaixo do qual estão 99% dos dados.
+    A pergunta-chave é: os dados vêm com rótulos (respostas corretas)? Se sim → supervisionado. Se não, mas queremos encontrar estrutura → não supervisionado. Se o agente aprende por tentativa e erro com recompensas → reforço.
 
 ---
 
-## Atividade 3 — Impacto do Tamanho do Conjunto de Teste
+## 3. Regressão ou Classificação?
 
-Treine dois modelos com diferentes proporções de `test_size` e compare os R²:
+Para cada problema abaixo, identifique se é regressão ou classificação e explique o critério usado:
 
-```python
-for test_size in [0.1, 0.3]:
-    X_tr, X_te, y_tr, y_te = train_test_split(
-        X, y, test_size=___, random_state=42
-    )
-    m = LinearRegression().fit(X_tr, y_tr)
-    r2 = r2_score(y_te, m.predict(X_te))
-    print(f"test_size={test_size} → R² Teste = {r2:.4f} "
-          f"| Treino={len(X_tr):,} | Teste={len(X_te):,}")
-```
-
-Responda: o R² mudou muito? Por quê ele pode variar com o tamanho do conjunto de teste?
+a) Prever o preço de uma ação amanhã.  
+b) Identificar se um tumor é maligno ou benigno.  
+c) Estimar quantos dias um paciente ficará internado.  
+d) Determinar qual dígito (0–9) está escrito numa imagem.  
+e) Decidir se um e-mail deve ir para a caixa de entrada ou para o spam.
 
 ??? tip "Dica"
-    Substitua `___` por `test_size`. Conjuntos de teste menores têm mais variância — o R² pode oscilar mais entre diferentes `random_state`.
+    O critério é a natureza da saída: número contínuo → regressão. Categoria discreta → classificação. Cuidado com o item (d) — apesar de usar números, os dígitos são categorias, não quantidades.
 
 ---
 
-## Atividade 4 — Analisando os Coeficientes
+## 4. O pipeline na prática
 
-Após treinar o modelo, imprima os coeficientes e responda:
+Um cientista de dados recebeu a tarefa de construir um modelo que prevê o valor de aluguel de apartamentos em São Paulo. Ordene as etapas abaixo na sequência correta e descreva brevemente o que deve acontecer em cada uma:
 
-1. Qual feature tem o **maior coeficiente positivo**? Isso faz sentido economicamente?
-2. `Latitude` tem coeficiente positivo ou negativo? Por quê?
-3. `AveBedrms` tem sinal esperado ou surpreendente? Pesquise o conceito de **multicolinearidade** para entender.
+- Avaliar o modelo com dados que ele nunca viu
+- Definir a métrica de sucesso
+- Coletar dados de aluguéis anunciados
+- Retreinar com dados mais recentes se a performance cair
+- Tratar valores ausentes e criar features relevantes
+- Escolher e treinar um modelo de regressão
+- Explorar distribuições, correlações e outliers
+
+??? tip "Dica"
+    A ordem correta é: definir o problema → coletar → explorar → preparar → treinar → avaliar → iterar. Você só sabe o que melhorar depois de medir.
 
 ---
 
-## Atividade 5 — Desafio
+## 5. Identificando etapas pelo sintoma
 
-Filtre o dataset removendo:
+Para cada sintoma abaixo, identifique em qual etapa do pipeline o problema ocorreu e o que deveria ter sido feito:
 
-- Blocos com `AveOccup > 20`
-- Blocos com `MedHouseVal == 5.0` (preço censurado)
+a) O modelo tem ótima performance no treino, mas falha completamente em produção.  
+b) Os dados de entrada misturavam reais e dólares sem conversão.  
+c) O modelo de spam dizia "não spam" para tudo e parecia ter 95% de acurácia — pois 95% dos dados eram não spam.  
+d) Seis meses após o deploy, a performance caiu muito sem que ninguém mudasse nada no código.
 
-Retreine o modelo com os dados filtrados e compare o R² com o modelo original.
+??? tip "Dica"
+    (a) Faltou separar treino e teste. (b) Limpeza e padronização não foram feitas. (c) A métrica escolhida não era adequada para dados desbalanceados. (d) Modelos em produção precisam ser monitorados e retreinados com dados novos.
 
-```python
-df_limpo = df[
-    (df["AveOccup"] <= ___) &
-    (df["MedHouseVal"] < ___)
-].copy()
+---
 
-print(f"Dataset original: {len(df):,} linhas")
-print(f"Dataset limpo:    {len(df_limpo):,} linhas")
+## 6. Fixando com Quiz
 
-X2 = df_limpo.drop(columns=["MedHouseVal"])
-y2 = df_limpo["MedHouseVal"]
+<quiz>
+Machine Learning e Inteligência Artificial são a mesma coisa.
 
-X_tr2, X_te2, y_tr2, y_te2 = train_test_split(X2, y2, test_size=0.2, random_state=42)
-model2 = LinearRegression().fit(X_tr2, y_tr2)
-r2_limpo = r2_score(y_te2, model2.predict(X_te2))
+- [ ] Verdadeiro
+> Incorreto. IA é o campo amplo. ML é uma das abordagens dentro dele — nem toda IA usa ML.
+- [x] Falso
+> Correto! IA é o campo. ML é uma subárea que usa dados para aprender padrões automaticamente.
+</quiz>
 
-print(f"\nR² (dados brutos): {r2_test:.4f}")
-print(f"R² (dados limpos): {r2_limpo:.4f}")
-```
+<quiz>
+Um modelo de regressão prevê uma categoria discreta como saída.
+
+- [ ] Verdadeiro
+> Incorreto. Regressão prevê valores contínuos. Prever categorias é o papel da classificação.
+- [x] Falso
+> Correto! Regressão prevê números contínuos (preço, temperatura). Classificação prevê categorias (spam/não spam, maligno/benigno).
+</quiz>
+
+<quiz>
+Qual etapa do pipeline consome mais tempo em projetos reais?
+
+- [ ] Treinar o modelo
+> O treino em si costuma ser rápido — especialmente com bibliotecas como scikit-learn.
+- [ ] Avaliar o modelo
+> A avaliação é importante, mas não é onde o tempo vai embora.
+- [x] Preparar os dados
+> Correto! Limpeza, tratamento de outliers, criação de features e normalização consomem 60–80% do tempo em projetos reais.
+- [ ] Definir o problema
+> Fundamental, mas geralmente não é onde o tempo é gasto.
+</quiz>
+
+<quiz>
+No aprendizado supervisionado, o modelo aprende a partir de dados sem rótulos.
+
+- [ ] Verdadeiro
+> Incorreto. Sem rótulos é aprendizado não supervisionado. No supervisionado, cada exemplo tem uma resposta correta associada.
+- [x] Falso
+> Correto! No supervisionado, cada amostra vem com o rótulo correto — é exatamente esse par (entrada, saída esperada) que o modelo usa para aprender.
+</quiz>
+
+<quiz>
+Retreinar o modelo com dados novos faz parte do pipeline de ML.
+
+- [x] Verdadeiro
+> Correto! O pipeline é cíclico. Modelos em produção precisam ser monitorados e retreinados quando o comportamento dos dados muda ao longo do tempo.
+- [ ] Falso
+> Incorreto. Um modelo treinado uma única vez fica desatualizado conforme o mundo muda — retreinar é parte essencial do processo.
+</quiz>
+
+<quiz>
+Aprendizado por reforço é o tipo mais usado em problemas de previsão de preços e classificação de e-mails.
+
+- [ ] Verdadeiro
+> Incorreto. Esses são problemas de aprendizado supervisionado — os dados têm rótulos e o modelo aprende a partir deles.
+- [x] Falso
+> Correto! Aprendizado por reforço é usado quando um agente aprende por tentativa e erro em um ambiente — jogos, robótica, otimização de rotas. Previsão e classificação são supervisionados.
+</quiz>

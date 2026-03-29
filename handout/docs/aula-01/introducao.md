@@ -1,4 +1,4 @@
-# 🧠 Introdução aos Fundamentos de IA
+# Aula 01 - 🧠 Introdução aos Fundamentos de IA
 
 Antes de escrever uma linha de código, vale entender o terreno. Esta página cobre os conceitos que vão aparecer repetidamente ao longo do curso — não para decorar, mas para que nada chegue como surpresa.
 
@@ -12,6 +12,7 @@ A diferença para a programação tradicional é direta: em vez de escrever regr
 
 !!! tip "A virada de chave"
     Em ML, você não programa a solução. Você programa o **processo de aprender** a solução a partir dos dados.
+![Diagrama representativo da áreas da Inteligência Artificial](img/diagram.png)
 
 ---
 

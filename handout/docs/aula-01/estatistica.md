@@ -58,11 +58,17 @@ Quando temos muitas variáveis, calcular a correlação par a par manualmente é
 
 ![Heatmap de correlação entre variáveis](img/heatmap_correlacao.png)
 
+Perceba que há uma simetria nesse heatmap. Por que você acha que ele tem essa característica?
+
+
 !!! tip "O que procurar em um heatmap"
     - Células vermelhas intensas → forte correlação positiva com o target
     - Células azuis intensas → forte correlação negativa
     - Correlações altas **entre features** (não com o target) podem indicar redundância — duas colunas dizendo a mesma coisa ao modelo
 
+
+!!! warning "Spoiler!"
+     Esse heatmap representa o dataset Californian Houses, que usaremos na próxima aula ( Regressão Linear ), por enquanto, interprete as features com base no nome e com base na correlação de cada uma. 
 ---
 
 ## Distribuições de Probabilidade

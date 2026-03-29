@@ -1,11 +1,24 @@
-# Aula 01 — Regressão Linear
+# Aula 02 — Regressão Linear
 
 Nesta aula saímos da teoria e colocamos a mão no dado. O fio condutor é o **California Housing Dataset** — um conjunto real, com problemas reais, que vai nos forçar a tomar decisões antes mesmo de treinar qualquer modelo.
 
 O objetivo não é só fazer o modelo funcionar. É entender **por que** cada etapa existe e o que acontece quando você a pula.
 
 ---
+## Vídeos prévios
+Caso você ache que faz sentido, e tenha tempo disponível, é fortemente recomendado que você assista esse vídeo antes da aula, ele é do nosso mestre todo poderoso **Andrew Ng**, usaremos muitas coisas ensinadas por ele!
 
+> - [Stanford CS229: Machine Learning - Linear Regression and Gradient Descent](https://www.youtube.com/watch?v=4b4MUYve_U8)
+
+Caso não ache necessário ver um vídeo grande assim, temos essa outra opção do StatQuest
+
+> - [ Linear Regression, Clearly Explained!!! ](https://www.youtube.com/watch?v=7ArmBVF2dCs)
+
+Caso você ainda ache muito grande, primeiro, largue os vídeos curtos, sério, isso ta acabando com sua vida, segundo, veja esse vídeo do 3-Minute  Data Science
+
+> - [Linear Regression in 3 Minutes ](https://www.youtube.com/watch?v=3dhcmeOTZ_Q)
+
+---
 ## O que vamos estudar
 
 | Seção | Conteúdo |
