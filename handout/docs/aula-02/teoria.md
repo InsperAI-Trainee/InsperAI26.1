@@ -65,6 +65,9 @@ Para a regressão linear existe um atalho: em vez de iterar, podemos resolver a 
 
 $$\hat{\mathbf{w}} = (X^T X)^{-1} X^T \mathbf{y}$$
 
+![Animação da representação geométrica da equação normal](img/normal_equation_v2.gif)
+
+
 O `LinearRegression` do scikit-learn usa exatamente essa fórmula por baixo dos panos — é por isso que ele treina em uma única chamada `.fit()`, sem hiperparâmetros de iteração.
 
 !!! warning "Quando a Equação Normal falha"
