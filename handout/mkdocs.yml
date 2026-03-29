@@ -1,7 +1,7 @@
 site_name: Aulas — Insper AI
 site_description: Material de apoio para as aulas de Inteligência Artificial
 site_author: Professor
-site_url: https://docs.insperai.com/
+site_url: https://gabrielca5.github.io/aulas-iAI-2026.1/
 
 theme:
   name: material
