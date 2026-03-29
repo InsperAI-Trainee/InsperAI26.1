@@ -4,7 +4,7 @@ site_author: Professor
 
 theme:
   name: material
-  language: pt
+  language: pt-BR
   palette:
     - scheme: default
       primary: indigo
@@ -33,7 +33,9 @@ theme:
     - content.code.copy
     - toc.integrate
     - toc.follow
-
+plugins:
+  - search
+  - mkdocs_quiz
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -65,9 +67,11 @@ nav:
   - "Aula 1 — Regressão Linear":
       - "Exposição Teórica":
           - "Visão Geral": aula-01/index.md
-          - "Teoria": aula-01/teoria.md
+          - "Regressão Linear": aula-01/teoria.md
       - "Estudo de Caso":
           - "1. Exploração dos Dados": aula-01/exploracao.md
           - "2. Outliers e Dados Suspeitos": aula-01/outliers.md
           - "3. Treinando o Modelo": aula-01/treinamento.md
-          - "4. Atividades": aula-01/atividades.md
+          - "4. Aprofundamento": aula-01/complementar.md
+          - "5. Atividades": aula-01/atividades.md
+          - "6. Resumo" : aula-01/resumo.md

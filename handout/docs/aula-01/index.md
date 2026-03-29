@@ -1,6 +1,8 @@
-# Regressão Linear com o Dataset California Housing
+# Aula 01 — Regressão Linear
 
-Bem-vindo ao material de apoio desta aula. Aqui você encontrará o conteúdo completo abordado em sala, com os códigos, gráficos e explicações organizados por seção.
+Nesta aula saímos da teoria e colocamos a mão no dado. O fio condutor é o **California Housing Dataset** — um conjunto real, com problemas reais, que vai nos forçar a tomar decisões antes mesmo de treinar qualquer modelo.
+
+O objetivo não é só fazer o modelo funcionar. É entender **por que** cada etapa existe e o que acontece quando você a pula.
 
 ---
 
@@ -8,17 +10,18 @@ Bem-vindo ao material de apoio desta aula. Aqui você encontrará o conteúdo co
 
 | Seção | Conteúdo |
 |---|---|
+| 📖 Teoria | Equação da reta, resíduos, MSE, notação vetorial e R² |
 | 🔍 Exploração | Carregamento, estatísticas descritivas e visualizações do dataset |
 | ⚠️ Outliers | Identificação de dados suspeitos que podem prejudicar o modelo |
 | 🤖 Treinamento | Divisão treino/teste, `LinearRegression` e avaliação com R² |
+| 🔗 Leitura Complementar | Análise completa de Gabriel Valentim (NeroAI) |
 | ✏️ Atividades | Exercícios para fixar os conceitos |
 
 ---
 
-## Dataset
+## O Dataset
 
-Usamos o **California Housing Dataset**, derivado do censo de 1990 do estado da Califórnia.  
-Cada linha representa um **bloco censitário** — a menor unidade geográfica do censo americano.
+O **California Housing Dataset** é derivado do censo de 1990 do estado da Califórnia. Cada linha representa um **bloco censitário** — a menor unidade geográfica do censo americano, tipicamente com 600 a 3.000 habitantes.
 
 | Coluna | Descrição |
 |---|---|
@@ -31,6 +34,9 @@ Cada linha representa um **bloco censitário** — a menor unidade geográfica d
 | `Latitude` | Latitude do bloco |
 | `Longitude` | Longitude do bloco |
 | `MedHouseVal` | **Target** — Valor mediano das casas (centenas de milhares de USD) |
+
+!!! warning "Dados do censo de 1990"
+    O dataset tem mais de 30 anos. Valores absolutos de preço e renda estão desatualizados — mas os **padrões e relações entre variáveis** continuam sendo um excelente campo de aprendizado.
 
 ---
 
