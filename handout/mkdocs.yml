@@ -59,7 +59,12 @@ extra_javascript:
 
 nav:
   - Início: index.md
-  
+  - "Setup de ambiente" :
+      - Introdução: setup/setup.md
+      - "1. Git": setup/git.md
+      - "2. GitHub": setup/github.md
+      - "3. Vscode" : setup/vscode.md
+      - "4. Gerenciador de pacotes" : setup/ge_pacotes.md
   - "Aula 1 — Fundamentos":
       - Introdução: aula-01/introducao.md
       - História da IA: aula-01/historia.md
