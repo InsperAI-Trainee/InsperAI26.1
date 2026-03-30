@@ -12,15 +12,15 @@ Referência completa de tudo que foi visto na Aula 01. Use esta página para rev
 | **Regressão múltipla** | $\hat{y} = \mathbf{w}^T \mathbf{x} + b$ | Previsão com várias features (produto escalar) |
 | **Forma matricial** | $\hat{\mathbf{y}} = X\mathbf{w} + b$ | Previsão para todo o dataset de uma vez |
 | **Resíduo** | $r_i = y_i - \hat{y}_i$ | Erro individual de cada amostra |
-| **MSE** | $\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}(y_i - \hat{y}_i)^2$ | Média dos erros ao quadrado — usada no treino |
+| **MSE** | $\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}(y_i - \hat{y}_i)^2$ | Média dos erros ao quadrado: usada no treino |
 | **RMSE** | $\sqrt{MSE}$ | Erro médio na unidade original do problema |
 | **R²** | $1 - \dfrac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}$ | Fração da variância do target explicada pelo modelo |
-| **Equação Normal** | $\hat{\mathbf{w}} = (X^TX)^{-1}X^T\mathbf{y}$ | Solução fechada — encontra os pesos ótimos direto |
+| **Equação Normal** | $\hat{\mathbf{w}} = (X^TX)^{-1}X^T\mathbf{y}$ | Solução fechada: encontra os pesos ótimos direto |
 
 !!! tip "Como interpretar o R²"
     - **R² < 0.5** → modelo fraco, não captura os padrões principais
     - **R² entre 0.5 e 0.8** → razoável, mas há espaço para melhorar
-    - **R² > 0.8** → bom ajuste — mas sempre verifique se não é overfitting
+    - **R² > 0.8** → bom ajuste, mas sempre verifique se não é overfitting
 
 ---
 
@@ -67,7 +67,7 @@ print(f"R² Teste: {r2:.4f}")
 | `AveOccup` | > 20 pessoas/domicílio | Prisões, hospitais, quartéis |
 
 !!! warning "Efeito no modelo"
-    Outliers elevam o MSE de forma desproporcional — ao elevar o erro ao quadrado, um ponto muito distante domina a função de custo e força o modelo a distorcer os coeficientes para tentar acomodá-lo.
+    Outliers elevam o MSE de forma desproporcional, ao elevar o erro ao quadrado, um ponto muito distante domina a função de custo e força o modelo a distorcer os coeficientes para tentar acomodá-lo.
 
 ---
 ## Glossário
@@ -91,7 +91,7 @@ print(f"R² Teste: {r2:.4f}")
 ### Modelo
 
 **Parâmetros**
-: Os valores que o modelo aprende durante o treino — os pesos $\mathbf{w}$ e o intercepto $b$.
+: Os valores que o modelo aprende durante o treino, os pesos $\mathbf{w}$ e o intercepto $b$.
 
 **Intercepto ($b$)**
 : Valor previsto pelo modelo quando todas as features são zero. Representa o "ponto de partida" da reta.

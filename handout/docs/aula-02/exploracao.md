@@ -1,7 +1,7 @@
 # 🔍 Exploração dos Dados
 
 Antes de aplicar qualquer modelo, precisamos **conhecer nossos dados**.  
-Nesta seção vamos carregar o dataset, inspecionar sua estrutura e visualizar distribuições e relações entre variáveis — sem nenhum pré-processamento por enquanto.
+Nesta seção vamos carregar o dataset, inspecionar sua estrutura e visualizar distribuições e relações entre variáveis sem nenhum pré-processamento por enquanto.
 
 !!! tip "Por que explorar antes de modelar?"
     Modelos aprendem padrões dos dados. Se os dados tiverem problemas que você não conhece, o modelo vai aprender esses problemas também — e você não vai saber por quê ele errou.

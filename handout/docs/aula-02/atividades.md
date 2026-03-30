@@ -55,7 +55,7 @@ for test_size in [0.1, 0.3]:
 Responda: o R² mudou muito? Por quê ele pode variar com o tamanho do conjunto de teste?
 
 ??? tip "Dica"
-    Substitua `___` por `test_size`. Conjuntos de teste menores têm mais variância — o R² pode oscilar mais entre diferentes `random_state`.
+    Substitua `___` por `test_size`. Conjuntos de teste menores têm mais variância (o R² pode oscilar mais entre diferentes) `random_state`.
 
 ---
 

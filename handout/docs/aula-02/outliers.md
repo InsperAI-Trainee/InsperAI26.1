@@ -3,7 +3,7 @@
 Os gráficos da exploração já deixaram pistas. Agora vamos investigar formalmente os pontos que podem **prejudicar o treinamento do modelo**.
 
 !!! danger "Por que isso importa?"
-    Um modelo de regressão linear minimiza o erro quadrático. Outliers têm erros grandes — e ao elevar ao quadrado, eles dominam a função de custo. O modelo acaba "distorcendo" os coeficientes para tentar acomodar esses pontos anômalos.
+    Um modelo de regressão linear minimiza o erro quadrático. Outliers têm erros grandes, e ao elevar ao quadrado, eles dominam a função de custo. O modelo acaba "distorcendo" os coeficientes para tentar acomodar esses pontos anômalos.
 
 ---
 

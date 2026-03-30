@@ -1,6 +1,6 @@
 # Aula 02 — Regressão Linear
 
-Nesta aula saímos da teoria e colocamos a mão no dado. O fio condutor é o **California Housing Dataset** — um conjunto real, com problemas reais, que vai nos forçar a tomar decisões antes mesmo de treinar qualquer modelo.
+Nesta aula saímos da teoria e colocamos a mão no dado. O fio condutor é o **California Housing Dataset**, um conjunto real, com problemas reais, que vai nos forçar a tomar decisões antes mesmo de treinar qualquer modelo.
 
 O objetivo não é só fazer o modelo funcionar. É entender **por que** cada etapa existe e o que acontece quando você a pula.
 
@@ -34,7 +34,7 @@ Caso você ainda ache muito grande, primeiro, largue os vídeos curtos, sério, 
 
 ## O Dataset
 
-O **California Housing Dataset** é derivado do censo de 1990 do estado da Califórnia. Cada linha representa um **bloco censitário** — a menor unidade geográfica do censo americano, tipicamente com 600 a 3.000 habitantes.
+O **California Housing Dataset** é derivado do censo de 1990 do estado da Califórnia. Cada linha representa um **bloco censitário**, a menor unidade geográfica do censo americano, tipicamente com 600 a 3.000 habitantes.
 
 | Coluna | Descrição |
 |---|---|

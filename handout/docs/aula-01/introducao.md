@@ -1,12 +1,12 @@
-# Aula 01 - 🧠 Introdução aos Fundamentos de IA
+# Aula 01 - Introdução aos Fundamentos de IA
 
-Antes de escrever uma linha de código, vale entender o terreno. Esta página cobre os conceitos que vão aparecer repetidamente ao longo do curso — não para decorar, mas para que nada chegue como surpresa.
+Antes de escrever uma linha de código, vale entender o terreno. Esta página cobre os conceitos que vão aparecer repetidamente ao longo do curso (não para decorar, mas para que nada chegue como surpresa).
 
 ---
 
 ## O que é Machine Learning?
 
-Inteligência Artificial é o campo. Machine Learning é uma das abordagens dentro dele — e a mais relevante para este curso.
+Inteligência Artificial é o campo. Machine Learning é uma das abordagens dentro dele (e a mais relevante para este curso).
 
 A diferença para a programação tradicional é direta: em vez de escrever regras explícitas, você fornece exemplos e deixa o algoritmo **descobrir as regras por conta própria**.
 
@@ -45,17 +45,17 @@ Todo projeto passa pelas mesmas etapas — independente da complexidade:
 7. **Colocar em produção** — disponibilizar o modelo para uso real
 
 !!! note "O pipeline é cíclico"
-    ML raramente funciona na primeira tentativa. A etapa 6 existe justamente para isso — você avalia, descobre o que está errado e volta ao passo necessário.
+    ML raramente funciona na primeira tentativa. A etapa 6 existe justamente para isso, você avalia, descobre o que está errado e volta ao passo necessário.
 
 !!! warning "Etapa 3 na prática"
-    Preparação de dados consome 60–80% do tempo em projetos reais. Não é a parte glamourosa — mas é onde a maioria dos modelos ganha ou perde.
+    Preparação de dados consome 60–80% do tempo em projetos reais. Não é a parte glamourosa mas é onde a maioria dos modelos ganha ou perde.
 
 
 ---
 
 ## 📚 Explore a Documentação
 
-A partir de agora, desenvolver o hábito de consultar a documentação oficial é tão importante quanto escrever o código. Nenhum material de aula vai cobrir tudo — e a documentação é onde você encontra o comportamento exato de cada função, os parâmetros disponíveis e exemplos adicionais.
+A partir de agora, desenvolver o hábito de consultar a documentação oficial é tão importante quanto escrever o código. Nenhum material de aula vai cobrir tudo, e a documentação é onde você encontra o comportamento exato de cada função, os parâmetros disponíveis e exemplos adicionais.
 
 !!! tip "Links essenciais"
     - **NumPy:** [numpy.org/doc](https://numpy.org/doc/stable/)
@@ -64,4 +64,4 @@ A partir de agora, desenvolver o hábito de consultar a documentação oficial �
     - **Matplotlib:** [matplotlib.org](https://matplotlib.org/stable/users/index.html)
 
 !!! note "Como usar a documentação na prática"
-    Não precisa ler tudo — use como referência. Quando encontrar uma função desconhecida ou quiser entender um parâmetro, esse é o primeiro lugar a consultar. Com o tempo, a leitura de documentação vira um instinto natural.
+    Não precisa ler tudo, use como referência. Quando encontrar uma função desconhecida ou quiser entender um parâmetro, esse é o primeiro lugar a consultar. Com o tempo, a leitura de documentação vira um instinto natural.

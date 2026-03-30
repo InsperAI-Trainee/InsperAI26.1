@@ -28,7 +28,7 @@ a ** 2       # array([1, 4, 9])
 ```
 
 !!! tip "Por que isso importa para ML?"
-    Um dataset é uma matriz NumPy. Cada linha é uma amostra, cada coluna é uma feature. Todas as operações do modelo — multiplicações, somas, médias — acontecem sobre essa estrutura.
+    Um dataset é uma matriz NumPy. Cada linha é uma amostra, cada coluna é uma feature. Todas as operações do modelo (multiplicações, somas, médias) acontecem sobre essa estrutura.
 
 ---
 
@@ -72,7 +72,7 @@ np.max(a)     # 9
 
 ## Produto Escalar
 
-O produto escalar entre dois vetores é uma das operações mais usadas em ML — está no coração da regressão linear, das redes neurais e de vários outros algoritmos:
+O produto escalar entre dois vetores é uma das operações mais usadas em ML, está no coração da regressão linear, das redes neurais e de vários outros algoritmos:
 ```python
 pesos    = np.array([0.5, 0.3, 0.2])
 features = np.array([10.0, 5.0, 2.0])
