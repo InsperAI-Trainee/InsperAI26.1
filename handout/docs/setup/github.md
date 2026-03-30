@@ -8,7 +8,7 @@
 
 ## Crie uma conta
 
-Acesse: https://github.com
+Acesse: [GitHub](https://github.com)
 
 ## Criando um Repositório:
 
@@ -107,12 +107,16 @@ Esse comando serve para você puxar todas as alterações que estão no GitHub p
 
 1. É necessário que você esteja na main para executar esse comando. Para isso, rode:
 
+
 ````
 git checkout main
+
 ````
 
 2. Escreva no terminal:
 
 ````
+
 git pull
+
 ````

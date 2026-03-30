@@ -14,12 +14,14 @@ Na prática, ele serve para:
 ### Windows
 
 1. Acesse a página oficial de instalação do Git para Windows:
-https://git-scm.com/
+[Git](https://git-scm.com/)
 2. Baixe e execute o arquivo.
 3. Avance nas telas mantendo as opções padrão.
 5. Ao final, abra o Terminal da sua maquina (PowerShell) e verifique se a instalação ocorreu com sucesso escrevendo: 
+
 ```
 git --version 
+
 ```
 
 obs: Se o comando git não for reconhecido, feche e abra o terminal novamente. Em alguns casos, isso resolve a atualização do PATH.
@@ -28,27 +30,35 @@ obs: Se o comando git não for reconhecido, feche e abra o terminal novamente. E
 
 1. Abra o Terminal.
 2. Rode:
+
 ````
 git --version
+
 ````
 Se o Git não estiver instalado, o macOS normalmente sugere a instalação das ferramentas de linha de comando.
 Confirme e aguarde a instalação.
 
-obs: se não funcionar mesmo assim, consulte o site oficial: https://git-scm.com/install/mac
+obs: se não funcionar mesmo assim, consulte o site oficial: [Git](https://git-scm.com/install/mac)
 
 ### Linux
 
 1. Abra o terminal.
 2. A depender da sua distribuição:
 - Debian/Ubunto: 
+
 ````
 sudo apt update
 sudo apt install git
- ````
+
+````
 
 - Fedora:
-````
-sudo dnf install git
+
 ````
 
-obs: se for outra distro, confira o site oficial: https://git-scm.com/install/linux
+sudo dnf install git
+
+
+````
+
+obs: se for outra distro, confira o site oficial: [Outras Distros](https://git-scm.com/install/linux)
