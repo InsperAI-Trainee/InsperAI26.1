@@ -14,14 +14,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
 
-      - name: Instalar dependências
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: "handout/pyproject.toml"
+
+      - name: Install dependencies
         working-directory: handout
-        run: pip install -r requirements.txt
+        run: uv sync
 
       - name: Deploy
         working-directory: handout
-        run: mkdocs gh-deploy --force
+        run: uv run mkdocs gh-deploy --force
