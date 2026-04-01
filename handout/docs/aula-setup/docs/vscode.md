@@ -1,4 +1,4 @@
-# Visual Studio Code
+# Visual Studio Code (IDE)
 
 ## O que é uma IDE?
 
