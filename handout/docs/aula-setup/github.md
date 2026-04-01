@@ -34,16 +34,39 @@ Se você ainda não configurou seu nome e email no Git, volte um momento para a 
 
 ## Conectando sua máquina ao GitHub
 
-Aqui entra uma distinção importante:
+Para de fato sincronizar o código que você escreve no seu computador com o código que está na nuvem, você precisa de autenticação e aqui entra uma distinção importante:
 
 - sua senha do GitHub serve para entrar no site;
-- sua chave SSH serve para autenticar sua máquina no terminal;
+- no terminal, a autenticação pode ser feita por SSH ou por HTTPS, dependendo do sistema operacional.
 
-Para o fluxo do curso, a opção mais simples e estável é usar **SSH**.
+Neste handout, vamos seguir assim:
 
-### 1. Gere uma chave SSH
+- **Windows**: usar **HTTPS**
+- **macOS e Linux**: usar **SSH**
 
-No terminal, rode: **(Não esqueça de mudar o e-mail para o mesmo da conta do github)**
+### **Windows: conectando por HTTPS**
+
+No Windows, vamos usar HTTPS porque esse caminho costuma ser mais simples para quem está começando.
+
+Se você instalou o Git for Windows na etapa anterior, o Git Credential Manager já deve vir junto com ele. Na prática, isso significa que, na primeira vez em que você clonar ou enviar código para o GitHub usando uma URL `https://`, o sistema deve abrir uma janela do navegador para você fazer login.
+
+Você não precisa configurar chave SSH no Windows para seguir este handout.
+
+Quando aparecer a janela de autenticação:
+
+1. Faça login na sua conta do GitHub.
+2. Autorize o acesso, se for solicitado.
+3. Volte para o terminal ou para o VS Code.
+
+Se tudo der certo, suas credenciais ficarão salvas no Windows e você não precisará repetir esse processo toda hora.
+
+### **macOS e Linux: conectando por SSH**
+
+No macOS e no Linux, vamos usar SSH. Esse é um método estável e comum para trabalhar com GitHub no terminal.
+
+#### 1. Gere uma chave SSH
+
+No terminal, rode: **(Não esqueça de mudar o e-mail para o mesmo da conta do GitHub)**
 
 ```bash
 ssh-keygen -t ed25519 -C "seu-email@exemplo.com"
@@ -51,41 +74,19 @@ ssh-keygen -t ed25519 -C "seu-email@exemplo.com"
 
 Use o mesmo email da sua conta do GitHub.
 
-Se você estiver no Windows e o comando `ssh-keygen` não funcionar no PowerShell, abra o `Git Bash`, que é instalado junto com o Git for Windows, e rode o mesmo comando lá.
-
 Quando aparecerem as perguntas:
 
 1. Aperte `Enter` para aceitar o local padrão do arquivo.
 2. Aperte `Enter` duas vezes para criar a chave sem passphrase (É uma camada de proteção extra que não vai ser necessária)
 
-### 2. Adicione a chave ao `ssh-agent`
-
-#### Windows (PowerShell)
-
-Se aparecer erro de permissão neste passo, abra o PowerShell como administrador e tente novamente.
-
-```powershell
-Get-Service ssh-agent | Set-Service -StartupType Automatic
-Start-Service ssh-agent
-ssh-add $env:USERPROFILE\.ssh\id_ed25519
-```
-
-#### macOS e Linux
+#### 2. Adicione a chave ao `ssh-agent`
 
 ```bash
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 
-### 3. Copie sua chave pública
-
-#### Windows (PowerShell)
-
-```powershell
-Get-Content $env:USERPROFILE\.ssh\id_ed25519.pub
-```
-
-#### macOS e Linux
+#### 3. Copie sua chave pública
 
 ```bash
 cat ~/.ssh/id_ed25519.pub
@@ -93,7 +94,7 @@ cat ~/.ssh/id_ed25519.pub
 
 Copie a linha inteira exibida no terminal.
 
-### 4. Cadastre a chave no GitHub
+#### 4. Cadastre a chave no GitHub
 
 1. No GitHub, clique na sua foto de perfil.
 2. Entre em `Settings`.
@@ -103,7 +104,7 @@ Copie a linha inteira exibida no terminal.
 6. Cole a chave pública copiada no passo anterior.
 7. Salve.
 
-### 5. Teste a conexão
+#### 5. Teste a conexão
 
 Rode:
 
@@ -115,151 +116,77 @@ Na primeira vez, o terminal pode perguntar se você quer confiar no servidor do 
 
 Se tudo deu certo, você verá uma mensagem dizendo que a autenticação funcionou.
 
-## Criando um repositório
+## Atividade
 
-Vamos criar um repositório, que é onde o projeto ficará armazenado.
+Ao longo do programa, várias aulas terão handouts a serem realizados em um repositório de código. Para criar esses repositórios, usaremos o GitHub Classroom, uma ferramenta do GitHub que centraliza repositórios para organização de cursos como esse.
 
-1. No GitHub, clique no botão `+` no canto superior direito.
-2. Clique em `New repository`.
+Para testar se tudo foi configurado corretamente, vamos praticar com uma atividade simples:
 
-![alt text](criar-repo.png)
+### Aceitando o assignment
 
-3. Preencha:
+- Abra o [link do classroom](https://classroom.github.com/assignment-invitations/752975e33be919418992f3098dfb5802) e clique em "Accept this assignment". Uma tela com a seguinte deve ser aberta:
 
-- nome do projeto;
-- visibilidade: público ou privado;
-- `README`: pode deixar marcado;
-- `.gitignore`: escolha `Python`.
+![alt text](assignment.png)
 
-4. Clique em `Create repository`.
+O GitHub Classroom automaticamente cria um repositório para você, a partir de um template com os arquivos de cada atividade.
 
-## Clonando um repositório
+- Clique no link do repositório. A página do seu repositório no GitHub deve abrir:
 
-Clonar significa trazer uma cópia do repositório do GitHub para a sua máquina.
+![alt text](repository.png)
 
-1. No repositório, clique no botão verde `Code`.
-2. Escolha a aba `SSH`.
-3. Copie a URL mostrada.
+- Clique no botão verde `Code`.
+- Escolha a aba correta:
 
-![alt text](image.png)
+    - **Windows**: `HTTPS`
+    - **macOS e Linux**: `SSH`
 
-Ela terá um formato parecido com este:
+- Copie a URL do repositório.
+
+Ela terá um formato parecido com um destes:
 
 ```text
+Windows (HTTPS):
+https://github.com/usuario/nome-do-repositorio.git
+
+macOS/Linux (SSH):
 git@github.com:usuario/nome-do-repositorio.git
 ```
 
-4. Abra o Visual Studio Code em uma janela nova.
-
-![alt text](image-1.png)
-
-5. Clique em `Clone Git Repository...`
-6. Cole a URL copiada e aperte `Enter`.
-
-Pronto: agora o repositório existe na nuvem e também na sua máquina.
-
-## Branches
-
-Branch é uma linha paralela de trabalho. Em vez de alterar direto a `main`, você cria uma branch para desenvolver uma tarefa específica.
-
-Isso reduz o risco de quebrar a versão principal do projeto e facilita a revisão.
-
-### Criando e entrando em uma branch
-
-No terminal do VS Code, rode:
-
-```bash
-git switch -c nome-da-branch
-```
+- Abra o terminal na pasta em que você quer salvar o repositório.
 
 Exemplo:
-
 ```bash
-git switch -c adiciona-grafico-inicial
+cd Documents/insper-ai/trainee
 ```
 
-Para ver em qual branch você está:
+!!! note "Atenção"
+    Mantenha uma boa organização dos repositórios, teremos vários durante o Trainee
+
+- Rode o comando abaixo, trocando a URL pelo endereço que você copiou:
 
 ```bash
-git branch
+git clone URL_DO_REPOSITORIO
 ```
 
-## Salvando suas mudanças
-
-Depois de editar os arquivos:
-
-1. Veja o que mudou:
+Exemplo no Windows:
 
 ```bash
-git status
+git clone https://github.com/usuario/nome-do-repositorio.git
 ```
 
-2. Adicione os arquivos ao próximo commit:
+Exemplo no macOS/Linux:
 
 ```bash
-git add .
+git clone git@github.com:usuario/nome-do-repositorio.git
 ```
 
-3. Crie um commit:
+- Se você estiver no Windows, pode aparecer uma janela do navegador pedindo login no GitHub. Isso faz parte da autenticação por HTTPS.
+- Quando o comando terminar, entre na pasta do repositório:
 
 ```bash
-git commit -m "Adiciona grafico inicial do projeto"
+cd nome-do-repositorio
 ```
 
-4. Envie sua branch para o GitHub:
+Se tudo deu certo, você terá uma pasta no seu computador com o nome do repositório que você viu no GitHub. Dentro dela, você criará e gerenciará seus códigos. 
 
-```bash
-git push -u origin nome-da-branch
-```
-
-Na primeira vez, troque `nome-da-branch` pelo nome real da branch que você criou.
-
-## Pull Request (PR)
-
-Um Pull Request é o pedido para que suas mudanças entrem no projeto principal.
-
-Na prática, ele serve para:
-
-- mostrar o que você alterou;
-- permitir revisão por outras pessoas;
-- discutir mudanças antes do merge;
-- manter a `main` mais estável.
-
-### Abrindo um PR
-
-1. Depois de fazer `git push`, o GitHub normalmente mostra o botão `Compare & pull request`.
-
-![alt text](ver-pr.png)
-
-2. Clique nesse botão.
-3. Revise o título e a descrição do PR.
-4. Clique em `Create pull request`.
-
-### Revisando um PR
-
-1. Veja as alterações na aba `Files changed`.
-2. Se estiver tudo certo, o merge pode ser feito na aba `Conversation`.
-
-![alt text](image-2.png)
-
-3. Clique em `Merge pull request`.
-
-![alt text](image-3.png)
-
-Se houver conflitos, será necessário resolvê-los antes do merge. Quando isso acontecer, peça ajuda sem hesitar: conflito de branch é uma parte normal do trabalho com Git.
-
-## Atualizando sua cópia local com `git pull`
-
-Antes de começar uma tarefa nova, atualize sua `main`.
-
-1. Volte para a branch principal:
-
-```bash
-git switch main
-```
-
-2. Puxe as alterações mais recentes do GitHub:
-
-```bash
-git pull origin main
-```
+Para fazer isso, você vai precisar de um **editor de códigos (IDE)**. Te ensinaremos na próxima seção.

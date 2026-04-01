@@ -70,6 +70,7 @@ nav:
       - "2. GitHub": aula-setup/github.md
       - "3. Vscode" : aula-setup/vscode.md
       - "4. Gerenciador de pacotes" : aula-setup/ge_pacotes.md
+      - "5. Fluxo com Git e GitHub": aula-setup/fluxo-git-github.md
 
   # - "Aula 1 — Fundamentos":
   #     - Introdução: aula-01/introducao.md

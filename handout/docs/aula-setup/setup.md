@@ -9,7 +9,9 @@ Nesta seção você vai instalar e configurar quatro ferramentas essenciais:
 - **GitHub** — onde o código vive na nuvem
 - **VS Code** — o editor que vamos usar no dia a dia
 
-Não é necessário entender tudo de uma vez. O objetivo aqui é ter o ambiente funcionando, e o significado de cada peça vai ficando mais claro conforme o avançamos.
+Para deixar o processo mais claro, o conteúdo de Git e GitHub foi dividido em mais de uma página: primeiro você instala e conecta as ferramentas, depois aprende o fluxo básico de uso.
+
+Não é necessário entender tudo de uma vez. O objetivo aqui é ter o ambiente funcionando, e o significado de cada peça vai ficando mais claro conforme avançamos.
 
 
 !!! note "Ajuda"
