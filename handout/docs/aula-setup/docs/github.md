@@ -124,7 +124,7 @@ Para testar se tudo foi configurado corretamente, vamos praticar com uma ativida
 
 ### Aceitando o assignment
 
-- Abra o [link do classroom](https://classroom.github.com/assignment-invitations/752975e33be919418992f3098dfb5802) e clique em "Accept this assignment". Uma tela com a seguinte deve ser aberta:
+- Abra o [link do classroom](https://classroom.github.com/a/MLLYqAOp) e clique em "Accept this assignment". Uma tela com a seguinte deve ser aberta:
 
 ![alt text](../img/assignment.png)
 

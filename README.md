@@ -70,6 +70,12 @@ Acesse `http://127.0.0.1:8000` no navegador.
 Para validar o site sem subir o servidor, rode o build em modo estrito:
 
 ```bash
+make build
+```
+
+Para publicar o site:
+
+```bash
 make deploy
 ```
 
