@@ -63,6 +63,9 @@ Branch é uma linha paralela de trabalho. Em vez de alterar direto a `main`, voc
 
 Isso reduz o risco de quebrar a versão principal do projeto e facilita a revisão.
 
+![alt text](../img/branches.png)
+
+
 No terminal do VS Code, rode:
 
 ```bash

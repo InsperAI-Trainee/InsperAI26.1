@@ -16,3 +16,11 @@ Não é necessário entender tudo de uma vez. O objetivo aqui é ter o ambiente 
 
 !!! note "Ajuda"
     Se você tiver qualquer dificuldade para fazer esse tutorial, peça ajuda. Se ninguém puder te ajudar agora, lembre-se que os LLMs são seus amigos :)
+
+## Autores
+
+| Nome | E-mail |
+|---|---|
+| Hector Soares | hectorsoares2005@gmail.com |
+| Thomas Kassabian | thomaskmkassabian@gmail.com |
+| Gabriel Aguiar | gabrielaguiar01@gmail.com |
