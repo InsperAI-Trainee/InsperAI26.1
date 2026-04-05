@@ -50,15 +50,7 @@ No Windows, vamos usar HTTPS porque esse caminho costuma ser mais simples para q
 
 Se você instalou o Git for Windows na etapa anterior, o Git Credential Manager já deve vir junto com ele. Na prática, isso significa que, na primeira vez em que você clonar ou enviar código para o GitHub usando uma URL `https://`, o sistema deve abrir uma janela do navegador para você fazer login.
 
-Você não precisa configurar chave SSH no Windows para seguir este handout.
-
-Quando aparecer a janela de autenticação:
-
-1. Faça login na sua conta do GitHub.
-2. Autorize o acesso, se for solicitado.
-3. Volte para o terminal ou para o VS Code.
-
-Se tudo der certo, suas credenciais ficarão salvas no Windows e você não precisará repetir esse processo toda hora.
+Você não precisa configurar chave SSH no Windows para seguir este handout. Vá para a etapa de **Atividade**.
 
 ### **macOS e Linux: conectando por SSH**
 
@@ -124,7 +116,7 @@ Para testar se tudo foi configurado corretamente, vamos praticar com uma ativida
 
 ### Aceitando o assignment
 
-- Abra o [link do classroom](https://classroom.github.com/a/MLLYqAOp) e clique em "Accept this assignment". Uma tela com a seguinte deve ser aberta:
+- Abra o [link do classroom](https://classroom.github.com/a/B-dto_MZ) e clique em "Accept this assignment". Uma tela com a seguinte deve ser aberta:
 
 ![alt text](../img/assignment.png)
 

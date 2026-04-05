@@ -14,7 +14,7 @@ Bem-vind@ ao repositório de aulas da Insper AI. Aqui você encontrará o conte�
 | Nome | E-mail |
 |---|---|
 | Thomas Kassabian | thomaskmkassabian@gmail.com |
-| Gabriel Aguiar | gabrielaguiar01@gsmail.com |
+| Gabriel Aguiar | gabrielaguiar01@gmail.com |
 
 ---
 
