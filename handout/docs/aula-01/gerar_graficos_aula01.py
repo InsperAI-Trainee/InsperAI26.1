@@ -70,6 +70,42 @@ def plot_intuicao():
 
 
 # ── 2. Equação da reta ────────────────────────────────────────────────────────
+def plot_caso_simples():
+    fig, ax = plt.subplots(figsize=(8.5, 5.5))
+
+    m_fit, b_fit = np.polyfit(AREA, PRECO, 1)
+    xline = np.linspace(35, 185, 200)
+
+    ax.scatter(
+        AREA,
+        PRECO / 1000,
+        color=PALETTE["azul"],
+        alpha=0.8,
+        s=60,
+        edgecolors="white",
+        linewidth=0.6,
+        label="Amostras do dataset",
+    )
+    ax.plot(
+        xline,
+        (m_fit * xline + b_fit) / 1000,
+        color=PALETTE["vermelho"],
+        linewidth=2.2,
+        label="Tendência linear",
+    )
+
+    ax.set_title("Área da casa vs valor da casa", fontweight="bold", pad=12)
+    ax.set_xlabel("Área da casa (m²)")
+    ax.set_ylabel("Valor da casa (R$ mil)")
+    ax.legend(fontsize=9)
+
+    plt.tight_layout()
+    plt.savefig(OUT / "caso_simples.png")
+    plt.close()
+    print("✔ caso_simples.png")
+
+
+# ── 3. Equação da reta ────────────────────────────────────────────────────────
 def plot_equacao_reta():
     fig, ax = plt.subplots(figsize=(9, 5.5))
 
@@ -116,7 +152,7 @@ def plot_equacao_reta():
     print("✔ equacao_reta.png")
 
 
-# ── 3. Retas ruins vs ajustada ───────────────────────────────────────────────
+# ── 4. Retas ruins vs ajustada ───────────────────────────────────────────────
 def plot_reta_ajuste():
     fig, axes = plt.subplots(1, 3, figsize=(13, 4.5))
 
@@ -143,7 +179,7 @@ def plot_reta_ajuste():
     print("✔ reta_ajuste.png")
 
 
-# ── 4. Resíduos ───────────────────────────────────────────────────────────────
+# ── 5. Resíduos ───────────────────────────────────────────────────────────────
 def plot_residuos():
     fig, ax = plt.subplots(figsize=(9, 5.5))
 
@@ -181,7 +217,7 @@ def plot_residuos():
     print("✔ residuos.png")
 
 
-# ── 5. Curva MSE ──────────────────────────────────────────────────────────────
+# ── 6. Curva MSE ──────────────────────────────────────────────────────────────
 def plot_mse_curva():
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
@@ -221,7 +257,7 @@ def plot_mse_curva():
     print("✔ mse_curva.png")
 
 
-# ── 6. Avaliação R² e RMSE ───────────────────────────────────────────────────
+# ── 7. Avaliação R² e RMSE ───────────────────────────────────────────────────
 def plot_avaliacao():
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
     rng2 = np.random.default_rng(7)
@@ -263,6 +299,7 @@ def plot_avaliacao():
 # ── Execução ──────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     plot_intuicao()
+    plot_caso_simples()
     plot_equacao_reta()
     plot_reta_ajuste()
     plot_residuos()

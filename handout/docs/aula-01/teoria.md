@@ -23,47 +23,57 @@ A pergunta que guia tudo é:
 
 ## O Caso Simples: Uma Única Feature
 
-Lembrando a equação de reta:
+Começando com o caso mais simples, imagine que queremos prever o valor de uma casa usando apenas uma única variável: a área.
+
+No gráfico abaixo:
+
+- o eixo `x` representa a área da casa
+- o eixo `y` representa o valor da casa
+- cada ponto representa uma amostra do dataset
+
+![Gráfico de dispersão com área da casa no eixo x e valor da casa no eixo y](img/caso_simples.png)
+
+Como os pontos seguem uma tendência crescente, faz sentido tentar resumir esse padrão com uma reta.
+
+Essa reta não precisa passar exatamente por todos os pontos.  
+Ela precisa capturar a **tendência geral** dos dados.
+
+Na matemática, uma reta é escrita assim:
 
 $$y = ax + b$$
 
 Onde, *a* é o **coeficiente angular** e *b* é o coeficiente linear.
 
-No contexto da regressão linear, enxergaremos assim:
+Na regressão linear, usamos a mesma ideia para fazer previsões:
 
 $$\hat{y} = wx + b$$
 
-| Símbolo | Significado |
+| Símbolo | Leitura no exemplo |
 |---|---|
-| $x$ | valor de entrada |
-| $\hat{y}$ | valor previsto pelo modelo |
-| $w$ | peso da feature - inclinação da reta |
-| $b$ | viés - intercepto |
+| $x$ | área da casa |
+| $\hat{y}$ | valor previsto da casa |
+| $w$ | inclinação da reta |
+| $b$ | ponto onde a reta cruza o eixo vertical |
 
-O coeficiente, ou peso (***weight***, se acostume com esse nome) $w$ diz quanto a previsão muda quando a entrada aumenta 1 unidade.  
-O intercepto, ou viés (***bias***, se acostume com esse nome) $b$ é o valor previsto quando $x = 0$.
+- O coeficiente, ou peso (***weight***, se acostume com esse nome) $w$ diz quanto a previsão muda quando a entrada aumenta 1 unidade.  
+- O intercepto, ou viés (***bias***, se acostume com esse nome) $b$ é o valor previsto quando $x = 0$.
 
-??? question "Considerando a definição acima, o que você entende por 'treinar' o modelo?"
+??? question "Pergunta: Considerando a definição acima, o que você entende por "treinar" o modelo?"
     Treinar o modelo é justamente encontrar os valores ideais de **weight** e **bias** para que a reta represente os dados da melhor forma possível.
+
+No exemplo de imóveis, isso significa:
+
+- $w$ diz quanto o valor previsto sobe a cada metro quadrado adicional
+- $b$ funciona como um valor base da reta
+
+
+Se, por exemplo, $w = 3500$, isso significa que cada unidade adicional de área aumenta a previsão em cerca de `R$ 3.500`.
+
+O ponto principal aqui é que, com uma única feature, a regressão linear é apenas uma forma de ajustar uma reta aos dados.
 
 !!! note "Outras notações"
     Você também pode ver a mesma equação escrita como $\hat{y} = mx + b$, $\hat{y} = \theta_1 x + \theta_0$ ou $\hat{y} = w_1 x + w_0$.  
     A ideia é a mesma.
-
----
-
-## Resíduos
-
-Sempre que o modelo faz uma previsão, podemos comparar o valor previsto com o valor real.
-
-Essa diferença é o **resíduo**, o erro de uma amostra individual:
-
-$$r_i = y_i - \hat{y}_i$$
-
-Se o resíduo é positivo, o modelo subestimou.  
-Se é negativo, o modelo superestimou.
-
-O treino da regressão linear tenta encontrar os valores de $w$ e $b$ que tornam esses erros, no conjunto, o menor possível.
 
 ---
 
@@ -85,6 +95,8 @@ No caso do California Housing, por exemplo, o modelo pode usar ao mesmo tempo:
 - latitude e longitude
 
 Cada peso passa a representar o efeito de uma feature **mantendo as demais fixas**.
+
+![Gráfico de dispersão com área da casa, número de quartos e valor da casa](img/regression_plane_3d.gif)
 
 ---
 
@@ -130,6 +142,21 @@ Onde cada linha da matriz é uma amostra de dados e cada coluna é uma feature.
 
     Para entender melhor, assista os vídeos 21 a 23 do curso do Andrew:
     > - [Machine Learning Specialization - vídeos 21 a 23](https://www.youtube.com/watch?v=jXg0vU0y1ak&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=21) 
+
+---
+
+## Resíduos
+
+Sempre que o modelo faz uma previsão, podemos comparar o valor previsto com o valor real.
+
+Essa diferença é o **resíduo**, o erro de uma amostra individual:
+
+$$r_i = y_i - \hat{y}_i$$
+
+Se o resíduo é positivo, o modelo subestimou.  
+Se é negativo, o modelo superestimou.
+
+O treino da regressão linear tenta encontrar os valores de $w$ e $b$ que tornam esses erros, no conjunto, o menor possível.
 
 ---
 
