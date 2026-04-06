@@ -2,15 +2,32 @@ window.MathJax = {
   tex: {
     inlineMath: [["\\(", "\\)"]],
     displayMath: [["\\[", "\\]"]],
-    processEscapes: false,
-    processEnvironments: false
+    processEscapes: true,
+    processEnvironments: true
   },
   options: {
+    skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
     ignoreHtmlClass: ".*|",
     processHtmlClass: "arithmatex"
   }
 };
 
-document$.subscribe(() => {
-  MathJax.typesetPromise();
-});
+function typesetMath() {
+  if (!window.MathJax || typeof window.MathJax.typesetPromise !== "function") {
+    return;
+  }
+
+  if (typeof window.MathJax.typesetClear === "function") {
+    window.MathJax.typesetClear();
+  }
+
+  window.MathJax.typesetPromise();
+}
+
+window.addEventListener("load", typesetMath);
+
+if (typeof document$ !== "undefined" && typeof document$.subscribe === "function") {
+  document$.subscribe(() => {
+    typesetMath();
+  });
+}
