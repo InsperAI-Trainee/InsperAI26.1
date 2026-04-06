@@ -1,6 +1,9 @@
 # ✏️ Atividades
 
-Coloque em prática o que foi visto em aula. Tente resolver cada exercício antes de olhar a dica.
+Estas atividades foram pensadas para serem feitas **depois** do notebook `workflow-ml.ipynb`.
+Use esta página como extensão da prática principal da aula, não como substituta dela.
+
+Tente resolver cada exercício antes de olhar a dica.
 
 ---
 

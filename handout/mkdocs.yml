@@ -82,14 +82,15 @@ nav:
       - "3. O Que vem por 'AI'": aula-00/aprofundamento.md
       - "4. Atividades": aula-00/atividades.md
 
-  # - "Aula 1 — Regressão Linear":  
-  #     - "Exposição Teórica":
-  #         - "Visão Geral": aula-01/index.md
-  #         - "Regressão Linear": aula-01/teoria.md
-  #     - "Estudo de Caso":
-  #         - "1. Exploração dos Dados": aula-01/exploracao.md
-  #         - "2. Outliers e Dados Suspeitos": aula-01/outliers.md
-  #         - "3. Treinando o Modelo": aula-01/treinamento.md
-  #         - "4. Leitura Complementar": aula-01/complementar.md
-  #         - "5. Atividades": aula-01/atividades.md
-  #         - "6. Resumo" : aula-01/resumo.md
+  - "Aula 1 — Workflow de ML e Regressão Linear":  
+      - "Exposição Teórica":
+          - "Visão Geral": aula-01/index.md
+          - "Regressão Linear": aula-01/teoria.md
+      - "Estudo de Caso":
+          - "1. Notebook da Prática": aula-01/pratica.md
+          - "2. Exploração dos Dados": aula-01/exploracao.md
+          - "3. Outliers e Dados Suspeitos": aula-01/outliers.md
+          - "4. Treinando o Modelo": aula-01/treinamento.md
+          - "5. Leitura Complementar": aula-01/complementar.md
+          - "6. Atividades": aula-01/atividades.md
+          - "7. Resumo" : aula-01/resumo.md

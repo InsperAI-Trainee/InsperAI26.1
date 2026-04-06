@@ -1,6 +1,6 @@
 # 📋 Resumo da Aula
 
-Referência completa de tudo que foi visto na Aula 0. Use esta página para revisar antes de exercícios, provas ou projetos.
+Referência completa de tudo que foi visto na Aula 1. Use esta página para revisar antes de exercícios, provas ou projetos.
 
 ---
 
