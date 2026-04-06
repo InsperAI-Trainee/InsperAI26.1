@@ -1,12 +1,12 @@
-# Aulas de Inteligência Artificial — InsperAI 2026.1
+# Trainee - Insper AI
 
-> Material de apoio para novos membros da entidade — semestre 2026.1
+> Material de apoio para novos membros da entidade
 
 ---
 
 ## Sobre o InsperAI
 
-O **InsperAI** é uma entidade acadêmica ligada ao [Insper](https://www.insper.edu.br), focada no estudo e aplicação de Machine Learning e Deep Learning. Este repositório reúne o material didático utilizado no onboarding de novos membros — do zero até os primeiros modelos funcionando.
+A **InsperAI** é uma entidade acadêmica ligada ao [Insper](https://www.insper.edu.br), focada no estudo e aplicação de Machine Learning e Deep Learning. Este repositório reúne o material didático utilizado no onboarding de novos membros — do zero até os primeiros modelos funcionando.
 
 O material é **100% open source**. Sinta-se à vontade para estudar, adaptar e contribuir.
 
@@ -16,36 +16,9 @@ O material é **100% open source**. Sinta-se à vontade para estudar, adaptar e 
 
 Este material é baseado em duas fontes principais:
 
-- 📘 **Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow** — Aurélien Géron
-- 🎓 **Machine Learning Specialization** — Andrew Ng (Coursera / DeepLearning.AI)
-
----
-
-## Conteúdo do Curso
-
-### Aula 00 — Fundamentos
-
-Nivelamento para quem está chegando sem base em ML aplicado.
-
-- Introdução: o que é ML, tipos de aprendizado e pipeline clássico
-- Breve história da Inteligência Artificial
-- Python e NumPy essencial para ML
-- Estatística descritiva e distribuições de probabilidade
-
-### Aula 01 — Regressão Linear
-
-Primeiro modelo supervisionado — do zero à avaliação.
-
-- Equação da reta, resíduos e função de custo (MSE)
-- Gradient Descent e Equação Normal
-- Notação vetorial e matricial
-- RMSE, MAE e R²
-- Curvas de aprendizado — diagnosticando overfitting e underfitting
-- Estudo de caso: **California Housing Dataset**
-  - Exploração e visualização
-  - Identificação e tratamento de outliers
-  - Treino e avaliação com Scikit-Learn
-- Leitura complementar: análise de **Gabriel Valentim** (NeroAI)
+- **Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow** — Aurélien Géron
+- **Machine Learning Specialization** — Andrew Ng (Coursera / DeepLearning.AI)
+- **Deep Learning Specialization** — Andrew Ng (Coursera / DeepLearning.AI)
 
 ---
 
