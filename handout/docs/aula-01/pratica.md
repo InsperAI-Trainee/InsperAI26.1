@@ -1,13 +1,16 @@
-# 💻 Notebook da Prática
+# Notebook da Prática
 
 O notebook `workflow-ml.ipynb` é a **atividade principal** da aula 01.  
 O handout explica o raciocínio; o notebook coloca o workflow em execução.
 
+As páginas de **Exploração dos Dados**, **Outliers e Dados Suspeitos** e **Treinando o Modelo** seguem a mesma progressão do notebook, servindo como guia de interpretação para cada etapa.
+
 ---
 ## Como usar
 
-- Abra o arquivo `handout/docs/aula-01/pratica/workflow-ml.ipynb` no Jupyter ou no VS Code.
-- Se estiver navegando pelo site gerado pelo MkDocs, use este link para acessar o arquivo: [workflow-ml.ipynb](pratica/workflow-ml.ipynb)
+- O notebook é distribuído no **assignment da aula 01 no GitHub Classroom**.
+- Abra o `workflow-ml.ipynb` no ambiente do assignment, no Jupyter ou no VS Code.
+- Use esta página do handout como mapa de apoio enquanto resolve a atividade.
 - Execute as células na ordem e responda às perguntas de reflexão no próprio notebook.
 
 ---

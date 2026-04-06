@@ -1,161 +1,99 @@
-# ⚠️ Outliers e Dados Suspeitos
+# Outliers e Dados Suspeitos
 
-Os gráficos da exploração já deixaram pistas. Agora vamos investigar formalmente os pontos que podem **prejudicar o treinamento do modelo**.
+Esta página acompanha a etapa **3. Investigando dados suspeitos** do notebook.
+
+O objetivo não é sair removendo pontos automaticamente. É entender quais casos podem distorcer a regressão linear e por quê.
 
 !!! danger "Por que isso importa?"
-    Um modelo de regressão linear minimiza o erro quadrático. Outliers têm erros grandes, e ao elevar ao quadrado, eles dominam a função de custo. O modelo acaba "distorcendo" os coeficientes para tentar acomodar esses pontos anômalos.
+    A regressão linear minimiza erro quadrático.  
+    Isso significa que pontos muito distantes podem dominar a função de custo e puxar os coeficientes do modelo.
+
+---
+
+## 3. Investigando Dados Suspeitos
+
+No notebook, você vai examinar dois problemas centrais do dataset:
+
+1. `MedHouseVal == 5.0`
+2. `AveOccup > 20`
+
+Esses dois casos já são suficientes para mostrar por que olhar os dados antes de treinar faz diferença.
 
 ---
 
 ## Problema 1 — Teto Artificial no Preço
 
-O valor máximo de `MedHouseVal` é exatamente **5.0** (USD 500.000). Isso não é coincidência: o dataset original truncou todos os preços acima desse valor.
-```python
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+O valor máximo de `MedHouseVal` é exatamente **5.0**. Isso indica que os preços acima de USD 500.000 foram truncados no dataset original.
 
-# ── Gráfico 1: distribuição do preço ──────────────────────────────────────────
-ax = axes[0]
+No notebook, conte quantas linhas têm `MedHouseVal == 5.0` e observe como isso aparece nos gráficos.
 
-ax.hist(df["MedHouseVal"], bins=80, color="#4a90d9",
-        edgecolor="white", linewidth=0.4)
+### O que observar
 
-# Marca o teto artificial — todos os preços acima de 500k foram truncados aqui
-ax.axvline(5.0, color="red", linestyle="--", linewidth=2,
-           label="Teto artificial (USD 500k)")
+- O valor máximo não é apenas alto; ele é repetido artificialmente.
+- O target deixa de representar o preço real dos imóveis mais caros.
+- O modelo passa a ver várias casas diferentes como se tivessem exatamente o mesmo preço.
 
-ax.set_title("Distribuição do Preço\n(note o pico no limite máximo)",
-             fontweight="bold")
-ax.set_xlabel("Valor Mediano das Casas (100k USD)")
-ax.set_ylabel("Frequência")
-ax.legend()
+### Por que isso atrapalha
 
-# ── Gráfico 2: média de cômodos por domicílio ──────────────────────────────────
-ax = axes[1]
+Se o target foi censurado, o modelo não está aprendendo o preço real dos casos mais valiosos.  
+Ele aprende apenas que, a partir de certo ponto, tudo “vira 5.0”.
 
-ax.hist(df["AveRooms"], bins=100, color="#f5a623",
-        edgecolor="white", linewidth=0.4)
+### Perguntas para responder no notebook
 
-# P99 = valor abaixo do qual estão 99% dos dados
-# Tudo acima disso é candidato a outlier
-p99 = df["AveRooms"].quantile(0.99)
-ax.axvline(p99, color="red", linestyle="--", linewidth=2,
-           label=f"P99 = {p99:.1f} cômodos")
-
-ax.set_title("Média de Cômodos por Domicílio\n(outliers à direita)",
-             fontweight="bold")
-ax.set_xlabel("Média de Cômodos (AveRooms)")
-ax.set_ylabel("Frequência")
-ax.set_xlim(0, 15)  # limita o eixo para focar na região relevante
-ax.legend()
-
-plt.suptitle("Sinais de dados suspeitos",
-             fontsize=14, fontweight="bold", y=1.02)
-plt.tight_layout()
-plt.show()
-```
-
-![Outliers de preço e cômodos](img/outliers_preco_comodos.png)
-
-!!! warning "Consequência para o modelo"
-    Todos os blocos com preço real acima de USD 500k aparecem como se valessem exatamente USD 500k. O modelo vai aprender que "casas muito boas custam USD 500k" — quando na verdade ele simplesmente não sabe o preço real delas.
+1. Quantas observações estão nesse teto?
+2. Esse valor parece um fenômeno natural ou um artefato do dataset?
+3. Faz sentido manter esses pontos em um modelo cujo objetivo é prever preço real?
 
 ---
 
-## Problema 2 — Ocupação Anômala (Prisões, Hotéis, Hospitais)
+## Problema 2 — Ocupação Anômala
 
-`AveOccup` mede a **média de pessoas por domicílio** no bloco. Uma residência típica tem 2–4 moradores. Mas alguns blocos têm valores absurdos:
-```python
-fig, ax = plt.subplots(figsize=(10, 5))
+`AveOccup` mede a média de pessoas por domicílio no bloco. Em áreas residenciais comuns, esse valor costuma ficar em torno de 2 a 4.
 
-ax.hist(df["AveOccup"], bins=200, color="#7b68ee",
-        edgecolor="white", linewidth=0.3)
+No notebook, conte os casos com `AveOccup > 20` e inspecione os blocos mais extremos.
 
-# Calcula o P99 apenas nos blocos "normais" (AveOccup <= 20)
-# Se incluíssemos os extremos, o P99 seria distorcido pelos próprios outliers
-p99 = df[df["AveOccup"] <= 20]["AveOccup"].quantile(0.99)
-ax.axvline(p99, color="red", linestyle="--", linewidth=2,
-           label=f"P99 (normais) = {p99:.1f} pessoas/dom.")
+### O que observar
 
-# Limita o eixo em 20 — os outliers extremos (500+) esticariam o gráfico
-# e tornariam a distribuição principal ilegível
-ax.set_xlim(0, 20)
+- Valores muito altos dificilmente descrevem bairros residenciais comuns.
+- Alguns blocos podem representar prisões, hospitais, hotéis, quartéis ou outros usos institucionais.
+- Mesmo que o dado esteja “correto”, ele pode estar fora do escopo do modelo que queremos treinar.
 
-ax.set_title("Ocupação Média por Domicílio (AveOccup)\n"
-             "Valores muito altos → blocos institucionais?",
-             fontweight="bold")
-ax.set_xlabel("Média de pessoas por domicílio")
-ax.set_ylabel("Frequência")
-ax.legend()
-plt.tight_layout()
-plt.show()
+### Exemplos plausíveis
 
-# Lista os blocos com ocupação acima de 20 — os candidatos a institucionais
-suspeitos = df[df["AveOccup"] > 20].sort_values("AveOccup", ascending=False)
-print(f"Blocos com AveOccup > 20: {len(suspeitos)}")
+| Tipo de bloco | Faixa possível de `AveOccup` | Por que distorce? |
+|---|---|---|
+| Presídio | 500+ | Muitas pessoas por unidade |
+| Hotel | 100+ | Quartos podem contar como domicílios |
+| Hospital ou asilo | 50+ | Leitos por unidade residencial |
+| Base militar | 100+ | Moradia coletiva |
 
-# Exibe as colunas mais relevantes para investigar cada bloco suspeito
-suspeitos[["Latitude", "Longitude", "AveOccup",
-           "AveRooms", "Population", "MedHouseVal"]].head(10)
-```
+### Perguntas para responder no notebook
 
-![Distribuição de ocupação com outliers](img/outliers_ocupacao.png)
-
-!!! example "Exemplos reais de blocos suspeitos"
-    | Tipo | AveOccup esperado | Por quê distorce? |
-    |---|---|---|
-    | **Presídio** | 500–1.000+ | Centenas de presos num "domicílio" |
-    | **Hotel** | 100–500 | Quartos de hotel contam como domicílios |
-    | **Hospital / Asilo** | 50–200 | Leitos por "unidade residencial" |
-    | **Base militar** | 200–800 | Quartel conta como domicílio |
+1. Os maiores valores de `AveOccup` parecem residenciais?
+2. Esses pontos parecem erro, exceção legítima ou dado fora do escopo?
+3. Você os manteria em um modelo voltado a blocos residenciais típicos?
 
 ---
 
-## Problema 3 — Outliers Geográficos
+## Antes de Seguir
 
-Nem todos os outliers são numéricos. Alguns blocos têm preços **anormalmente altos ou baixos** comparados com seus vizinhos geográficos:
-```python
-from scipy import stats
+Antes de ir para o treino, vale responder explicitamente:
 
-# Z-score mede quantos desvios padrão um valor está da média
-# |z| > 2.5 significa que o ponto está bem fora do padrão da distribuição
-z_scores = np.abs(stats.zscore(df["MedHouseVal"]))
-eh_suspeito = z_scores > 2.5
+1. O teto em `MedHouseVal` atrapalha a regressão? Por quê?
+2. Um bloco com `AveOccup = 30`, `80` ou `200` parece residencial?
+3. Esses pontos devem ser removidos sempre, ou isso depende do objetivo do modelo?
 
-fig, ax = plt.subplots(figsize=(12, 8))
+!!! note "Ponto central da aula"
+    Limpeza de dados não é ritual. É decisão de modelagem.  
+    Você remove um ponto quando entende o que ele representa e por que ele prejudica o objetivo do modelo.
 
-# ── Blocos normais: coloridos pelo preço em azul ───────────────────────────────
-normais = df[~eh_suspeito]  # ~ inverte o booleano — seleciona os NÃO suspeitos
-ax.scatter(normais["Longitude"], normais["Latitude"],
-           c=normais["MedHouseVal"], cmap="Blues",
-           alpha=0.5,
-           s=normais["Population"]/100,  # tamanho proporcional à população
-           linewidths=0,
-           label="Blocos normais")
+---
 
-# ── Blocos suspeitos: destacados em vermelho com borda ────────────────────────
-suspeitos = df[eh_suspeito]
-ax.scatter(suspeitos["Longitude"], suspeitos["Latitude"],
-           c=suspeitos["MedHouseVal"], cmap="Reds",
-           alpha=0.8,
-           s=suspeitos["Population"]/100,
-           linewidths=1.5, edgecolors="red",
-           marker="D",  # losango para diferenciar visualmente dos normais
-           label=f"Outliers ({len(suspeitos)} blocos)")
+## Extensões Possíveis
 
-ax.set_title("Outliers Geográficos: Blocos com Preços Anômalos",
-             fontweight="bold", fontsize=12)
-ax.set_xlabel("Longitude")
-ax.set_ylabel("Latitude")
-ax.legend()
-ax.grid(True, alpha=0.2)
-plt.tight_layout()
-plt.show()
-```
+Se quiser ir além do fluxo principal do notebook, duas extensões naturais são:
 
-![Mapa geográfico dos outliers](img/mapa_suspeitos.png)
+- investigar valores extremos de `AveRooms`
+- procurar blocos geograficamente anômalos
 
-!!! warning "O que causa outliers geográficos?"
-    - **Bairros premium inesperados** — Uma região normalmente barata tem um bloco muito caro (gentrificação, novo desenvolvimento)
-    - **Guetos isolados** — Um bairro nobre tem um bloco muito barato (bairro degradado, insegurança)
-    - **Efeitos de fronteira** — Blocos na borda de cidades/regiões têm padrões de preço muito diferentes
-    - **Erros de geocodificação** — Coordenadas incorretas podem colocar um bloco no lugar errado do mapa
+Essas extensões aparecem melhor nas [Atividades](atividades.md) e na [Leitura Complementar](complementar.md), sem sobrecarregar o fluxo principal da prática.

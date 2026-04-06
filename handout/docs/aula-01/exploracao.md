@@ -1,99 +1,101 @@
-# 🔍 Exploração dos Dados
+# Exploração dos Dados
 
-Antes de aplicar qualquer modelo, precisamos **conhecer nossos dados**.  
-Nesta seção vamos carregar o dataset, inspecionar sua estrutura e visualizar distribuições e relações entre variáveis sem nenhum pré-processamento por enquanto.
+Esta página acompanha as etapas **1. Inspeção inicial** e **2. EDA curta** do notebook da prática.
 
-!!! tip "Por que explorar antes de modelar?"
-    Modelos aprendem padrões dos dados. Se os dados tiverem problemas que você não conhece, o modelo vai aprender esses problemas também — e você não vai saber por quê ele errou.
+O papel do handout aqui é dizer **o que fazer** e **o que observar**.  
+O papel do notebook é produzir as tabelas, gráficos e respostas.
+
+!!! tip "Como usar esta página"
+    Deixe o notebook aberto e avance por ele na mesma ordem dos tópicos abaixo.  
+    Sempre que aparecer uma visualização ou uma estatística, volte aqui para interpretar o que vale a pena notar.
 
 ---
 
-## Carregamento e Inspeção Inicial
+## 1. Inspeção inicial
+
+No notebook, execute a parte que carrega o `California Housing Dataset` e depois rode os comandos de inspeção básica:
 
 ```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.ticker as mticker
-import seaborn as sns
-from sklearn.datasets import fetch_california_housing
-
-california = fetch_california_housing(as_frame=True)
-df = california.frame
-
-print("Shape:", df.shape)
 df.head()
-```
-
-Após carregar, usamos `.describe()` para ver as estatísticas básicas de cada coluna:
-
-```python
+df.info()
 df.describe().T.round(2)
 ```
 
-!!! note "O que observar no `.describe()`"
-    - **mean vs 50%**: se a média e a mediana forem muito diferentes, a distribuição é assimétrica.
-    - **max muito longe do 75%**: sinal claro de outliers.
-    - **std alto**: grande dispersão nos dados.
+Nesta etapa, o objetivo não é tirar conclusões profundas ainda. É só construir um mapa inicial do dataset.
+
+### O que observar
+
+- Quantas linhas e colunas existem.
+- Se há valores faltantes.
+- Quais colunas parecem ter grande dispersão.
+- Quais máximos estão muito distantes do percentil de 75%.
+- Qual coluna é o target: `MedHouseVal`.
+
+### Perguntas para responder no notebook
+
+1. Há valores faltantes?
+2. Quais colunas já parecem ter valores extremos?
+3. Em quais variáveis a média parece bem distante da mediana?
+
+!!! note "Leitura rápida do `.describe()`"
+    - **mean vs 50%**: diferença grande sugere assimetria.
+    - **max muito longe do 75%**: sinal clássico de outliers.
+    - **std alto**: indica grande dispersão.
 
 ---
 
-## Distribuição das Variáveis
+## 2. EDA curta
 
-O histograma de cada variável nos mostra a forma da distribuição, a amplitude dos valores e possíveis anomalias.
+No notebook, a ideia é fazer uma exploração curta, suficiente para levantar os sinais mais importantes para o restante da aula.
 
-```python
-fig, axes = plt.subplots(3, 3, figsize=(14, 10))
-axes = axes.flatten()
-colors = plt.cm.tab10.colors
+As visualizações centrais desta etapa são:
 
-for i, col in enumerate(df.columns):
-    axes[i].hist(df[col], bins=50, color=colors[i], edgecolor="white", linewidth=0.4)
-    axes[i].set_title(col)
-    axes[i].yaxis.set_major_formatter(
-        mticker.FuncFormatter(lambda x, _: f"{int(x):,}")
-    )
+- distribuição do target `MedHouseVal`
+- distribuição de variáveis como `AveOccup` e `AveRooms`
+- mapa de `Longitude` vs `Latitude`, colorido por `MedHouseVal`
 
-fig.suptitle("Distribuição de cada variável — sem tratamento",
-             fontsize=15, fontweight="bold", y=1.01)
-plt.tight_layout()
-plt.show()
-```
+Você não precisa esgotar o dataset. Precisa apenas descobrir os padrões que vão afetar o modelo.
 
-![Histogramas de todas as variáveis](img/histogramas.png)
+### O que observar
 
-!!! warning "Algo já chama atenção"
-    Repare no histograma de `MedHouseVal` (o target): há um pico artificial no valor **5.0**.  
-    Isso indica que o dataset **truncou os preços acima de USD 500.000**. Vamos explorar isso na próxima seção.
+- Se existe concentração artificial de valores em `MedHouseVal`.
+- Se `AveOccup` e `AveRooms` têm caudas longas ou valores implausíveis.
+- Se há padrão geográfico forte no preço das casas.
+
+### Perguntas para responder no notebook
+
+1. O histograma de `MedHouseVal` parece natural ou há algum teto visível?
+2. `AveOccup` e `AveRooms` parecem compatíveis com bairros residenciais comuns?
+3. Os blocos mais caros parecem distribuídos ao acaso ou concentrados em certas regiões?
+
+!!! warning "Sinal importante"
+    Se você encontrar um pico muito forte em `MedHouseVal = 5.0`, guarde isso.  
+    Esse detalhe vai voltar na próxima página, quando investigarmos dados suspeitos.
 
 ---
 
-## Distribuição Geográfica
+## 2.2 Correlações com o Target
 
-O dataset contém latitude e longitude de cada bloco. Podemos plotar um mapa aproximado da Califórnia e colorir os pontos pelo preço mediano:
+Ainda na exploração, calcule as correlações das features com `MedHouseVal`.
 
-```python
-fig, ax = plt.subplots(figsize=(10, 7))
+O objetivo aqui não é escolher automaticamente as melhores variáveis, e sim ganhar intuição:
 
-sc = ax.scatter(
-    df["Longitude"], df["Latitude"],
-    c=df["MedHouseVal"],
-    cmap="plasma",
-    alpha=0.3,
-    s=df["Population"] / 200,  # tamanho ∝ população
-    linewidths=0,
-)
+- quais variáveis parecem mais associadas ao preço
+- quais relações são positivas
+- quais relações são negativas
 
-cbar = plt.colorbar(sc, ax=ax)
-cbar.set_label("Valor mediano das casas (100k USD)", fontsize=10)
+### O que observar
 
-ax.set_title("Localização dos blocos censitários\n"
-             "(tamanho ∝ população  |  cor = preço)",
-             fontsize=13, fontweight="bold")
-ax.set_xlabel("Longitude")
-ax.set_ylabel("Latitude")
-plt.tight_layout()
-plt.show()
-```
+- Se `MedInc` aparece entre as maiores correlações positivas.
+- Se latitude e longitude parecem carregar informação geográfica relevante.
+- Se variáveis com correlação fraca ainda podem ser úteis quando combinadas com outras.
 
-![Mapa geográfico dos blocos censitários](img/mapa_geo.png)
+### Perguntas para responder no notebook
+
+1. Quais features parecem mais relevantes para prever `MedHouseVal`?
+2. Alguma correlação te surpreendeu?
+3. Correlação fraca significa feature inútil?
+
+!!! note "Limite da correlação"
+    Correlação mede associação linear isolada.  
+    Um modelo com múltiplas features pode extrair valor mesmo de variáveis que, sozinhas, parecem pouco informativas.

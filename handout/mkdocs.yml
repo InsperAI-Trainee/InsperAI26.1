@@ -83,11 +83,11 @@ nav:
       - "4. Atividades": aula-00/atividades.md
 
   - "Aula 1 — Workflow de ML e Regressão Linear":  
-      - "Exposição Teórica":
+      - "Introducão":
           - "Visão Geral": aula-01/index.md
           - "Regressão Linear": aula-01/teoria.md
-      - "Estudo de Caso":
-          - "1. Notebook da Prática": aula-01/pratica.md
+      - "Prática":
+          - "1. Notebook": aula-01/pratica.md
           - "2. Exploração dos Dados": aula-01/exploracao.md
           - "3. Outliers e Dados Suspeitos": aula-01/outliers.md
           - "4. Treinando o Modelo": aula-01/treinamento.md

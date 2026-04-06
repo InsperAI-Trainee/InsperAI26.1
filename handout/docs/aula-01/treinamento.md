@@ -1,137 +1,143 @@
-# 🤖 Treinando o Modelo
+# Treinando o Modelo
 
-Com os dados explorados, vamos treinar nosso primeiro modelo de regressão linear.  
-O fluxo será simples e direto: dividir os dados, treinar e avaliar.
+Esta página acompanha as etapas **4 a 8** do notebook:
 
----
+1. Preparação dos dados
+2. Treino do modelo baseline
+3. Avaliação do baseline
+4. Limpeza dos dados suspeitos
+5. Comparação entre modelo bruto e modelo limpo
 
-## Separando Features e Target
-```python
-# Remove a coluna alvo do conjunto de features
-# X contém tudo que o modelo vai usar para prever
-X = df.drop(columns=["MedHouseVal"])
-
-# y é o que queremos prever — o preço mediano de cada bloco
-y = df["MedHouseVal"]
-```
+O handout não traz as saídas prontas.  
+Ele serve como roteiro de interpretação para o que você vai executar no notebook.
 
 ---
 
-## Train / Test Split
+## 4. Preparação dos Dados
 
-Dividimos o dataset em duas partes:
+No notebook, primeiro treinamos um **baseline com os dados brutos**.
 
-- **Treino (80%)**: o modelo aprende os coeficientes a partir desses dados.
-- **Teste (20%)**: dados que o modelo **nunca viu** — usados para medir a performance real.
-```python
-from sklearn.model_selection import train_test_split
+Nesta etapa, você deve:
 
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y,
-    test_size=0.2,   # 20% dos dados reservados para teste
-    random_state=42  # garante que o split seja igual toda vez que rodar
-)
+- separar features e target em `X` e `y`
+- fazer `train_test_split` com `test_size=0.2` e `random_state=42`
+- confirmar o tamanho dos conjuntos de treino e teste
 
-print(f"Treino:  {X_train.shape[0]:,} amostras")
-print(f"Teste:   {X_test.shape[0]:,} amostras")
-```
+### O que observar
 
-!!! warning "Por que não usar tudo para treinar?"
-    Se avaliássemos o modelo nos mesmos dados em que ele treinou, mediríamos apenas o quanto ele **memorizou** os dados — não o quanto ele **generalizou**. O conjunto de teste simula dados novos do mundo real.
+- O target `MedHouseVal` não entra em `X`.
+- O conjunto de teste precisa ficar isolado até a avaliação.
+- O split é a referência para medir generalização, não memorização.
+
+!!! warning "Por que não avaliar no treino?"
+    Se você medir desempenho apenas nos dados usados no ajuste, não está avaliando generalização.  
+    Está medindo o quanto o modelo se adaptou ao próprio treino.
 
 ---
 
-## Treinamento com `LinearRegression`
+## 5. Treino do Modelo Baseline
 
-O `LinearRegression` do scikit-learn resolve a **Equação Normal** internamente, encontrando os coeficientes que minimizam o erro quadrático médio de forma exata:
+Agora, no notebook, treine um `LinearRegression()` nos dados brutos.
 
-$$\hat{\theta} = (X^T X)^{-1} X^T y$$
-```python
-from sklearn.linear_model import LinearRegression
+Use nomes consistentes, para facilitar a comparação posterior:
 
-model = LinearRegression()
+- `model_bruto`
+- `coef_brutos`
 
-# .fit() é onde o aprendizado acontece — o modelo resolve a Equação Normal
-# e armazena os coeficientes ótimos internamente
-model.fit(X_train, y_train)
+### O que observar
 
-# model.intercept_ é o b₀ — o valor base quando todas as features são zero
-print("Intercepto (b₀):", round(model.intercept_, 4))
+- O intercepto é o valor base do modelo.
+- Cada coeficiente indica o efeito marginal de uma feature, mantendo as demais fixas.
+- O sinal e a magnitude dos coeficientes precisam ser interpretados com cuidado, especialmente quando há multicolinearidade.
 
-# model.coef_ é o vetor w — um coeficiente para cada feature
-# zip() emparelha cada nome de coluna com seu respectivo coeficiente
-print("\nCoeficientes:")
-for feat, coef in zip(X.columns, model.coef_):
-    print(f"  {feat:15s}: {coef:+.4f}")
-```
+### Perguntas para responder no notebook
 
-!!! note "Interpretando os coeficientes"
-    Cada coeficiente indica: **mantendo todas as outras variáveis fixas**, quanto o preço previsto muda ao aumentar aquela feature em 1 unidade.  
-    Por exemplo: um coeficiente positivo em `MedInc` significa que blocos com maior renda mediana tendem a ter casas mais caras — o que faz sentido!
+1. Qual feature tem o maior coeficiente positivo?
+2. Algum sinal parece contraintuitivo?
+3. O ranking por valor absoluto faz sentido econômico?
+
+!!! note "Ligação com a teoria"
+    Se os coeficientes parecerem misteriosos, volte para a página [Regressão Linear](teoria.md), especialmente a parte de notação vetorial e interpretação dos pesos.
 
 ---
 
-## Avaliação com R²
+## 6. Avaliação do Baseline
 
-O **R²** (coeficiente de determinação) mede a proporção da variância do target que o modelo consegue explicar:
+No notebook, gere previsões para treino e teste e organize as métricas em `metricas_brutas`.
 
-$$R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}$$
+As métricas mínimas desta aula são:
 
-| Valor de R² | Interpretação |
-|---|---|
-| **1.0** | Modelo perfeito |
-| **0.0** | Equivalente a prever sempre a média |
-| **< 0.0** | Pior do que prever a média |
+- `R²`
+- `RMSE`
+- `MAE`
 
-```python
-from sklearn.metrics import r2_score
+Além disso, monte o gráfico de **valor real vs valor predito**.
 
-# Gera previsões tanto no treino quanto no teste
-# Comparar os dois R² é a forma mais direta de detectar overfitting
-y_pred_train = model.predict(X_train)
-y_pred_test  = model.predict(X_test)
+### O que observar
 
-r2_train = r2_score(y_train, y_pred_train)
-r2_test  = r2_score(y_test,  y_pred_test)
+- Se o desempenho em treino e teste é parecido ou muito diferente.
+- Se o `R²` de teste parece razoável para um baseline simples.
+- Se há sinais visuais de limite artificial no target.
+- Se a dispersão dos pontos sugere que a relação não é perfeitamente linear.
 
-print(f"R² Treino: {r2_train:.4f}")
-print(f"R² Teste:  {r2_test:.4f}")
-# Se r2_train >> r2_test, o modelo está sofrendo de overfitting
-```
+### Perguntas para responder no notebook
+
+1. O modelo parece generalizar ou memorizar?
+2. O gráfico `real vs predito` revela efeito do teto em `MedHouseVal`?
+3. O erro do modelo parece pequeno o bastante para dizer que a regressão linear resolveu o problema?
 
 ---
 
-## Visualizando: Real vs Predito
+## 7. Limpando Dados Suspeitos e Treinando de Novo
 
-O gráfico ideal seria uma linha diagonal perfeita. Qualquer desvio dessa linha é erro do modelo:
-```python
-fig, ax = plt.subplots(figsize=(8, 6))
+Agora o notebook repete o pipeline após uma limpeza simples:
 
-# Cada ponto é uma amostra do conjunto de teste
-# Eixo x = preço real, Eixo y = preço previsto pelo modelo
-ax.scatter(y_test, y_pred_test,
-           alpha=0.2,       # transparência para revelar densidade
-           s=8,             # pontos pequenos — temos milhares de amostras
-           color="#4a90d9",
-           label="Amostras de teste")
+- remover linhas com `MedHouseVal == 5.0`
+- remover linhas com `AveOccup > 20`
 
-# Linha de referência: previsão perfeita (real == previsto)
-# Pontos acima da linha = modelo superestimou
-# Pontos abaixo da linha = modelo subestimou
-ax.plot([y.min(), y.max()], [y.min(), y.max()],
-        color="red", linewidth=1.5, linestyle="--",
-        label="Predição perfeita")
+Use nomes consistentes:
 
-ax.set_xlabel("Valor Real (100k USD)")
-ax.set_ylabel("Valor Predito (100k USD)")
-ax.set_title(f"Real vs Predito — R² = {r2_test:.3f}", fontweight="bold")
-ax.legend()
-plt.tight_layout()
-plt.show()
-```
+- `df_limpo`
+- `X_limpo`, `y_limpo`
+- `X_train_limpo`, `X_test_limpo`, `y_train_limpo`, `y_test_limpo`
+- `model_limpo`
+- `metricas_limpas`
 
-![Gráfico Real vs Predito](img/real_vs_predito.png)
+### O que observar
 
-!!! warning "O que o gráfico revela"
-    - A **faixa horizontal** no topo (valor real = 5.0) é o efeito do teto artificial de preço — o modelo tenta prever valores variados, mas o target real é sempre 5.0.
-    - A dispersão dos pontos mostra que a relação entre as features e o preço **não é perfeitamente linear**.
+- Quantas linhas foram removidas.
+- Se os coeficientes mudaram de forma relevante.
+- Se as métricas melhoraram de maneira clara ou apenas marginal.
+
+!!! note "Leitura correta da limpeza"
+    Melhorar a métrica é importante, mas não é a única razão para limpar dados.  
+    Às vezes a limpeza melhora mais a coerência do problema do que o número final do `R²`.
+
+---
+
+## 8. Comparando Bruto vs Limpo
+
+A última etapa do notebook é comparar os dois modelos lado a lado.
+
+A comparação principal deve incluir:
+
+- `R²`
+- `RMSE`
+- `MAE`
+
+Se fizer sentido, compare também:
+
+- coeficientes
+- resíduos
+- gráfico `real vs predito`
+
+### Perguntas para responder no notebook
+
+1. O `R²` de teste melhorou?
+2. `RMSE` e `MAE` diminuíram?
+3. A limpeza ajudou mais na interpretação do problema ou na performance?
+4. O baseline limpo parece um ponto de partida melhor para as próximas aulas?
+
+!!! tip "Fechamento da aula"
+    O resultado mais importante não é “qual número ficou maior”.  
+    É entender como decisões sobre dados mudam o comportamento do modelo.

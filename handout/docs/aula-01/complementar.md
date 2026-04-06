@@ -1,10 +1,10 @@
-# 🔗 Leitura Complementar — Gabriel Valentim
+# Leitura Complementar — Gabriel Valentim
 
 ---
 
 ## Quem é Gabriel Valentim?
 
-**Gabriel Valentim** é Co-Founder da **NeroAI**, empresa focada em soluções de inteligência artificial aplicada. Com uma trajetória construída dentro do próprio Insper, Gabriel é um dos nomes que conecta o ambiente acadêmico com a prática real de dados, e o notebook que você vai encontrar no link abaixo reflete exatamente isso: uma análise limpa, bem raciocínada e próxima do que se faz no mercado.
+**Gabriel Valentim** é Co-Founder da **NeroAI**, empresa focada em soluções de inteligência artificial aplicada. Com uma trajetória construída dentro do próprio Insper, Gabriel é um dos nomes que conecta o ambiente acadêmico com a prática real de dados, e o notebook que você vai encontrar no link abaixo reflete exatamente isso: uma análise limpa, bem raciocinada e próxima do que se faz no mercado.
 
 !!! info "Por que indicar esse material?"
     Livros e aulas cobrem os conceitos. Notebooks de praticantes mostram **como esses conceitos se traduzem em decisões reais**, o que cortar, o que transformar, por que escolher uma abordagem e não outra. Esse notebook é um bom exemplo disso.
@@ -15,7 +15,7 @@
 
 O repositório contém uma análise completa de regressão linear aplicada ao **California Housing Dataset** (o mesmo que usamos nesta aula). O notebook principal é o `simple_california_house.ipynb`, e o que o diferencia não é o dataset, mas a **forma como cada decisão é documentada e justificada**.
 
-🔗 [github.com/Insper-Data/simple-linear-regression](https://github.com/Insper-Data/simple-linear-regression)
+[github.com/Insper-Data/simple-linear-regression](https://github.com/Insper-Data/simple-linear-regression)
 
 ---
 
@@ -38,7 +38,7 @@ Cada variável é analisada individualmente — histograma, boxplot, e uma concl
     Observe que ele não só plota os gráficos, ele **escreve o que viu** antes de decidir o que fazer. Esse hábito de documentar o raciocínio é o que separa uma análise reproduzível de um código que só o autor entende.
 
 !!! warning "Fique atento"
-    Na seção de `AveOccup`, Gabriel identifica os mesmos outliers institucionais que discutimos na Aula 0, prisões, hotéis, blocos anômalos. Veja como a conclusão dele se compara com a nossa abordagem.
+    Na seção de `AveOccup`, Gabriel identifica os mesmos outliers institucionais que discutimos nesta aula: prisões, hotéis e blocos anômalos. Veja como a conclusão dele se compara com a nossa abordagem.
 
 ---
 

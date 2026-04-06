@@ -1,52 +1,52 @@
 # Aula 1 — Workflow de ML e Regressão Linear
 
-Nesta aula saímos da teoria e colocamos a mão no dado. O fio condutor é o **California Housing Dataset**, um conjunto real, com problemas reais, que vai nos forçar a tomar decisões antes mesmo de treinar qualquer modelo.
+Nesta aula, você vai compreender o fluxo de trabalho de um projeto de IA e implementar o seu primeiro modelo de IA! O fio condutor é o **California Housing Dataset**, um conjunto de dados real, com problemas reais, que vai nos forçar a tomar decisões antes mesmo de treinar qualquer modelo.
 
-O objetivo não é só fazer o modelo funcionar. É entender **por que** cada etapa existe e o que acontece quando você a pula.
+O objetivo não é só fazer o modelo funcionar. É entender **por que** cada etapa existe, o que cada saída significa e o que acontece quando você pula uma etapa do workflow.
 
 ---
-## Como usar os materiais
+## Workflow de ML
 
-Esta aula foi organizada para que o **handout** e o **notebook** tenham papéis diferentes e complementares:
+Em qualquer projeto de IA, o fluxo básico costuma ser:
 
-| Material | Papel na aula |
-|---|---|
-| Handout | Explica a teoria, mostra a intuição matemática e documenta o estudo de caso |
-| [Notebook da prática](pratica.md) | Guia a atividade em código: exploração, investigação de outliers, treino e comparação de modelos |
+1. Entender o problema e o dataset.
+2. Explorar os dados e procurar sinais de erro, assimetria e outliers.
+3. Separar treino e teste.
+4. Treinar um primeiro baseline.
+5. Avaliar com métricas e gráficos.
+6. Ajustar os dados ou o modelo e comparar os resultados.
+
+É exatamente essa sequência que vamos seguir nesta aula. Cada uma dessas etapas será explicada.
+
+---
+## Material
+
+Esta aula é composta por um handout (esta página) e uma atividade prática em um notebook.
 
 Sequência recomendada:
 
 1. Leia esta visão geral e a página de [Regressão Linear](teoria.md).
-2. Abra o [Notebook da prática](pratica.md) e execute a atividade guiada.
-3. Volte às páginas de exploração, outliers e treinamento sempre que quiser interpretar melhor o que apareceu no notebook.
-4. Feche a aula com [Atividades](atividades.md) e [Resumo](resumo.md).
+2. Abra o notebook do assignment e execute a atividade guiada.
+3. Use [Exploração dos Dados](exploracao.md), [Outliers e Dados Suspeitos](outliers.md) e [Treinando o Modelo](treinamento.md) em paralelo, na mesma ordem do notebook.
 
 ---
-## Vídeos prévios
-Caso você ache que faz sentido, e tenha tempo disponível, é fortemente recomendado que você assista esse vídeo antes da aula, ele é do nosso mestre todo poderoso **Andrew Ng**, usaremos muitas coisas ensinadas por ele!
+## Vídeos
+
+Antes de começar, assista as aulas do curso de ML do GOAT **Andrew Ng**.
+> - [Machine Learning Specialization - vídeos 9 a 14](https://www.youtube.com/watch?v=dLc-lfEEYss&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=9)
+
+Alternativamente, caso você tenha tempo, recomendamos fortemente assistir assistir essa masterclass do GOAT que vai do conceito mais fundamental da IA até a matemática do treinamento de modelos.
 
 > - [Stanford CS229: Machine Learning - Linear Regression and Gradient Descent](https://www.youtube.com/watch?v=4b4MUYve_U8)
+
 
 Caso não ache necessário ver um vídeo grande assim, temos essa outra opção do StatQuest
 
 > - [ Linear Regression, Clearly Explained!!! ](https://www.youtube.com/watch?v=7ArmBVF2dCs)
 
-Caso você ainda ache muito grande, primeiro, largue os vídeos curtos, sério, isso está acabando com sua vida, segundo, veja esse vídeo do 3-Minute Data Science
+Caso você ainda ache muito grande, primeiro, largue os vídeos curtos, sério, isso está acabando com sua vida. Segundo, veja esse vídeo do 3-Minute Data Science
 
 > - [Linear Regression in 3 Minutes ](https://www.youtube.com/watch?v=3dhcmeOTZ_Q)
-
----
-## O que vamos estudar
-
-| Seção | Conteúdo |
-|---|---|
-| 📖 Teoria | Equação da reta, resíduos, MSE, notação vetorial e R² |
-| 💻 Prática guiada | Notebook principal da aula com baseline, análise de outliers e comparação antes/depois da limpeza |
-| 🔍 Exploração | Carregamento, estatísticas descritivas e visualizações do dataset |
-| ⚠️ Outliers | Identificação de dados suspeitos que podem prejudicar o modelo |
-| 🤖 Treinamento | Divisão treino/teste, `LinearRegression` e avaliação com R² |
-| 🔗 Leitura Complementar | Análise completa de Gabriel Valentim (NeroAI) |
-| ✏️ Atividades | Exercícios pós-notebook para fixar e estender o que foi feito na prática |
 
 ---
 
@@ -71,5 +71,5 @@ O **California Housing Dataset** é derivado do censo de 1990 do estado da Calif
 
 ---
 
-!!! info "Referência"
-    Este material acompanha o capítulo 4 do livro **Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow** (Aurélien Géron).
+## Referências
+- **Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow** (Aurélien Géron) - Capítulo 4
