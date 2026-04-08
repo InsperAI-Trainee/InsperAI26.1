@@ -17,30 +17,6 @@ O objetivo da aula não é só treinar um classificador com `scikit-learn`.
 - por que avaliar um classificador é mais sutil do que olhar uma única métrica
 
 ---
-## Workflow da Aula
-
-A sequência desta aula é:
-
-1. Entender o que muda quando saímos de regressão e entramos em classificação.
-2. Ver como a Regressão Logística produz scores, probabilidades e classes.
-3. Entender a função sigmoide e a fronteira de decisão.
-4. Construir um baseline com `LogisticRegression`.
-5. Avaliar esse baseline com matriz de confusão, acurácia, precisão, recall e F1-score.
-6. Discutir por que a melhor métrica depende do **custo do erro**.
-
----
-## Material
-
-Esta aula é composta por um handout e uma atividade prática em notebook.
-
-Sequência recomendada:
-
-1. Leia [O Problema de Classificação](classificacao.md).
-2. Leia [Regressão Logística e Sigmoide](logistica.md).
-3. Leia [Métricas e Trade-offs](metricas.md).
-4. Faça a atividade em [Prática](pratica.md).
-
----
 ## Dataset da Aula
 
 A prática usa o **Breast Cancer Wisconsin Dataset**, disponível no `scikit-learn`.
@@ -59,4 +35,3 @@ O target é binário:
 ## Referências
 
 - **Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow** (Aurélien Géron) - Capítulos 3 e 4
-- Andrew Ng, **Machine Learning Specialization** - classificação logística e métricas de classificação
