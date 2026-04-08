@@ -1,92 +1,78 @@
-# Gradient Descent e Convergência
+# Gradient Descent
 
-Com a função de custo e o gradiente definidos, falta o mecanismo de ajuste iterativo.
+## Introdução
 
-Esse mecanismo é o **gradient descent**.
+O Gradient Descent é um algoritmo de otimização usado para **minimizar a função de custo** ajustando os parâmetros do modelo ($\mathbf{w}$ e $b$).
 
----
-## A ideia do algoritmo
+A ideia básica é calcular o **gradiente da função de custo** em relação aos parâmetros e, em seguida, atualizar os parâmetros na direção oposta ao gradiente.
 
-O algoritmo repete sempre o mesmo ciclo:
+!!! note "Vídeos"
+    Antes de iniciar, assista os [vídeos 14 a 20](https://www.youtube.com/watch?v=WtlvKq_zxPI&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=16) do curso de Machine Learning.
+    
 
-1. começar com pesos iniciais
-2. calcular o gradiente
-3. atualizar os parâmetros na direção oposta ao gradiente
-4. repetir até convergir ou atingir o limite de iterações
+## O gradiente da função de custo
 
-As atualizações são:
+O gradiente é um vetor que aponta na **direção de maior crescimento** de uma função, sendo composto pelas derivadas parciais em relação a cada parâmetro.
 
-$$
-\mathbf{w} \leftarrow \mathbf{w} - \alpha \frac{\partial J}{\partial \mathbf{w}}
-$$
+### Derivada parcial
+Assim como a derivada representa a **taxa de crescimento** de uma função, a derivada parcial representa a taxa em relação a um parâmetro específico. Ou seja, se fixarmos todos os parâmetros, exceto um, a derivada parcial nos dirá como a função de custo muda quando alteramos apenas aquele parâmetro.
 
-$$
-b \leftarrow b - \alpha \frac{\partial J}{\partial b}
-$$
+\[
+\nabla J(\mathbf{w}, b) = \left[ \frac{\partial J}{\partial \mathbf{w}}, \frac{\partial J}{\partial b} \right]
+\]
 
-Onde `\alpha` é a taxa de aprendizado.
+Onde:
 
----
-## Taxa de aprendizado
+- $\nabla$ é o símbolo do gradiente.
+- $\frac{\partial }{\partial \mathbf{w}}$ representa a derivada parcial em relação ao parâmetro correspondente (nesse caso $\mathbf{w}$).
 
-Se `\alpha` for:
+Para a Regressão Logística, as derivadas parciais da função de custo Log Loss são:
 
-- muito pequeno, o treino fica lento
-- muito grande, o custo pode oscilar ou divergir
+\[
+\frac{\partial J}{\partial \mathbf{w_j}} = \frac{1}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i) \cdot \mathbf{x_j}_i
+\]
 
-Esse hiperparâmetro não é detalhe.
-Ele muda completamente o comportamento do treino.
+\[
+\frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i)
+\]
 
----
-## Convergência
+Onde:
 
-Na prática, queremos ver o custo cair ao longo das iterações.
+- $m$: número de exemplos no conjunto de dados.
+- $i$: índice do exemplo atual.
+- $j$: índice da feature atual.
 
-Sinais esperados de um treino saudável:
+Fique à vontade para deduzir essas fórmulas, mas não é obrigatório para a implementação.
 
-- a função de custo diminui
-- os parâmetros estabilizam
-- o critério de parada é alcançado
+!!! note "Vídeo"
+    O [vídeo 36](https://www.youtube.com/watch?v=H9bXvYh3nO4&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=36) do curso de Machine Learning deve ajudar a entender as derivadas parciais.
+    
 
-Sinais de problema:
+## Método do Gradiente Descendente
 
-- custo oscilando
-- custo aumentando
-- treino extremamente lento
+Como você pode ter imaginado, o método é iterativo, e consiste nos seguintes passos:
 
----
-## Escala das features
+1. **Inicialização**: Começamos com valores iniciais para $\mathbf{w}$ e $b$ (geralmente zeros ou pequenos valores aleatórios).
+2. **Cálculo do Gradiente**: Para cada iteração, calculamos o gradiente da função de custo:
 
-Gradient descent é sensível à escala dos dados.
-Features em escalas muito diferentes dificultam a otimização.
+    \[
+    \nabla J(\mathbf{w}, b) = \left[ \frac{\partial J}{\partial \mathbf{w}}, \frac{\partial J}{\partial b} \right]
+    \]
 
-Na prática, isso significa:
+3. **Atualização dos Parâmetros**: Atualizamos os parâmetros na direção oposta ao gradiente:
 
-- convergência mais lenta
-- maior sensibilidade ao valor de `alpha`
-- pesos com magnitudes difíceis de comparar
+    \[
+    \mathbf{w} \leftarrow \mathbf{w} - \alpha \frac{\partial J}{\partial \mathbf{w}}
+    \]
 
-!!! warning "Não trate convergência como mágica"
-    Se o algoritmo só funciona depois de muita tentativa aleatória de `alpha`, provavelmente falta discutir escala dos dados com clareza.
+    \[
+    b \leftarrow b - \alpha \frac{\partial J}{\partial b}
+    \]
 
----
-## Vetorização
+    Onde $\alpha$ é a taxa de aprendizado, um hiperparâmetro que controla o tamanho dos passos de atualização.
 
-No notebook, você pode até implementar partes com loops para entender a lógica.
-Mas a forma padrão em ML numérico é **vetorizada**:
+4. **Iteração**: Repetimos os passos 2 e 3 até que a função de custo converja (ou seja, até que as atualizações se tornem muito pequenas) ou até atingir um número máximo de iterações.
 
-- mais rápida
-- mais concisa
-- mais próxima do que bibliotecas reais fazem
-
-É por isso que `np.dot()` aparece tanto nessa aula.
-
----
-## O que observar no notebook
-
-Quando executar a prática, preste atenção em quatro coisas:
-
-1. o custo realmente cai?
-2. o valor de `alpha` parece razoável?
-3. o critério de parada faz sentido?
-4. o desempenho final fica próximo do baseline com `sklearn`?
+!!! note "Vídeos"
+    Os [vídeos 15 a 17](https://www.youtube.com/watch?v=WtlvKq_zxPI&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=16) do curso de Machine Learning devem ajudar nessa parte.
+    
