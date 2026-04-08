@@ -60,7 +60,8 @@ extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 draft_docs: |
-  aula-01
+  aula-02
+  aula-03
 
 
 nav:
@@ -92,5 +93,18 @@ nav:
           - "3. Outliers e Dados Suspeitos": aula-01/outliers.md
           - "4. Treinando o Modelo": aula-01/treinamento.md
           - "5. Leitura Complementar": aula-01/complementar.md
-          - "6. Atividades": aula-01/atividades.md
-          - "7. Resumo" : aula-01/resumo.md
+          #- "6. Atividades": aula-01/atividades.md
+          #- "7. Resumo" : aula-01/resumo.md
+    
+  - "Aula 2 — Classificação e Regressão Logística":
+      - "Visão Geral": aula-02/index.md
+      - "1. O Problema de Classificação": aula-02/classificacao.md
+      - "2. Regressão Logística e Sigmoide": aula-02/logistica.md
+      - "3. Métricas e Trade-offs": aula-02/metricas.md
+      - "4. Prática": aula-02/pratica.md
+
+  - "Aula 3 — Otimização":
+      - "Visão Geral": aula-03/index.md
+      - "1. Função de Custo e Gradiente": aula-03/custo-gradiente.md
+      - "2. Gradient Descent e Convergência": aula-03/gradient-descent.md
+      - "3. Prática": aula-03/pratica.md
