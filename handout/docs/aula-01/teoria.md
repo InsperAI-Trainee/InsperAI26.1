@@ -40,39 +40,43 @@ Ela precisa capturar a **tendência geral** dos dados.
 
 Na matemática, uma reta é escrita assim:
 
-$$y = ax + b$$
+\[
+y = ax + b
+\]
 
 Onde, *a* é o **coeficiente angular** e *b* é o coeficiente linear.
 
 Na regressão linear, usamos a mesma ideia para fazer previsões:
 
-$$\hat{y} = wx + b$$
+\[
+\hat{y} = wx + b
+\]
 
 | Símbolo | Leitura no exemplo |
 |---|---|
-| $x$ | área da casa |
-| $\hat{y}$ | valor previsto da casa |
-| $w$ | inclinação da reta |
-| $b$ | ponto onde a reta cruza o eixo vertical |
+| \(x\) | área da casa |
+| \(\hat{y}\) | valor previsto da casa |
+| \(w\) | inclinação da reta |
+| \(b\) | ponto onde a reta cruza o eixo vertical |
 
-- O coeficiente, ou peso (***weight***, se acostume com esse nome) $w$ diz quanto a previsão muda quando a entrada aumenta 1 unidade.  
-- O intercepto, ou viés (***bias***, se acostume com esse nome) $b$ é o valor previsto quando $x = 0$.
+- O coeficiente, ou peso (***weight***, se acostume com esse nome) \(w\) diz quanto a previsão muda quando a entrada aumenta 1 unidade.  
+- O intercepto, ou viés (***bias***, se acostume com esse nome) \(b\) é o valor previsto quando \(x = 0\).
 
 ??? question "Pergunta: Considerando a definição acima, o que você entende por "treinar" o modelo?"
     Treinar o modelo é justamente encontrar os valores ideais de **weight** e **bias** para que a reta represente os dados da melhor forma possível.
 
 No exemplo de imóveis, isso significa:
 
-- $w$ diz quanto o valor previsto sobe a cada metro quadrado adicional
-- $b$ funciona como um valor base da reta
+- \(w\) diz quanto o valor previsto sobe a cada metro quadrado adicional
+- \(b\) funciona como um valor base da reta
 
 
-Se, por exemplo, $w = 3500$, isso significa que cada unidade adicional de área aumenta a previsão em cerca de `R$ 3.500`.
+Se, por exemplo, \(w = 3500\), isso significa que cada unidade adicional de área aumenta a previsão em cerca de `R$ 3.500`.
 
 O ponto principal aqui é que, com uma única feature, a regressão linear é apenas uma forma de ajustar uma reta aos dados.
 
 !!! note "Outras notações"
-    Você também pode ver a mesma equação escrita como $\hat{y} = mx + b$, $\hat{y} = \theta_1 x + \theta_0$ ou $\hat{y} = w_1 x + w_0$.  
+    Você também pode ver a mesma equação escrita como \(\hat{y} = mx + b\), \(\hat{y} = \theta_1 x + \theta_0\) ou \(\hat{y} = w_1 x + w_0\).  
     A ideia é a mesma.
 
 ---
@@ -82,7 +86,9 @@ O ponto principal aqui é que, com uma única feature, a regressão linear é ap
 Na prática, quase nunca temos apenas uma variável de entrada.  
 Em vez de usar só uma feature, podemos usar várias ao mesmo tempo:
 
-$$\hat{y} = b + w_1 x_1 + w_2 x_2 + \dots + w_n x_n$$
+\[
+\hat{y} = b + w_1 x_1 + w_2 x_2 + \dots + w_n x_n
+\]
 
 Agora cada feature tem um coeficiente (peso) próprio.
 
@@ -102,9 +108,9 @@ Cada peso passa a representar o efeito de uma feature **mantendo as demais fixas
 
 ## A Forma Vetorizada
 
-Para simplificar a notação, agrupamos os coeficientes em um vetor $\mathbf{w}$ e as features em um vetor $\mathbf{x}$:
+Para simplificar a notação, agrupamos os coeficientes em um vetor \(\mathbf{w}\) e as features em um vetor \(\mathbf{x}\):
 
-$$
+\[
 \mathbf{w} =
 \begin{pmatrix}
 w_1 \\
@@ -120,17 +126,21 @@ x_2 \\
 \vdots \\
 x_n
 \end{pmatrix}
-$$
+\]
 
 A equação fica:
 
-$$\hat{y} = \mathbf{w}^T \mathbf{x} + b$$
+\[
+\hat{y} = \mathbf{w}^T \mathbf{x} + b
+\]
 
 Essa expressão é um **produto escalar** entre o vetor de pesos e o vetor de features.
 
-Quando fazemos isso para muitas amostras ao mesmo tempo, organizamos os dados em uma matriz $X$:
+Quando fazemos isso para muitas amostras ao mesmo tempo, organizamos os dados em uma matriz \(X\):
 
-$$\hat{\mathbf{y}} = X\mathbf{w} + b$$
+\[
+\hat{\mathbf{y}} = X\mathbf{w} + b
+\]
 
 Onde cada linha da matriz é uma amostra de dados e cada coluna é uma feature.
 
@@ -151,12 +161,14 @@ Sempre que o modelo faz uma previsão, podemos comparar o valor previsto com o v
 
 Essa diferença é o **resíduo**, o erro de uma amostra individual:
 
-$$r_i = y_i - \hat{y}_i$$
+\[
+r_i = y_i - \hat{y}_i
+\]
 
 Se o resíduo é positivo, o modelo subestimou.  
 Se é negativo, o modelo superestimou.
 
-O treino da regressão linear tenta encontrar os valores de $w$ e $b$ que tornam esses erros, no conjunto, o menor possível.
+O treino da regressão linear tenta encontrar os valores de \(w\) e \(b\) que tornam esses erros, no conjunto, o menor possível.
 
 ---
 
@@ -164,7 +176,7 @@ O treino da regressão linear tenta encontrar os valores de $w$ e $b$ que tornam
 
 Para saber se uma reta está boa ou ruim, precisamos resumir todos os resíduos em um único número. 
 
-Como os resíduos dependem das previsões, e as previsões dependem dos parâmetros do modelo (**$w$** e **$b$**), faz sentido afirmar que o resíduo acumulado do modelo (custo) é uma função dos parâmetros, certo? Por isso, esse cálculo se chama **Função de Custo**.
+Como os resíduos dependem das previsões, e as previsões dependem dos parâmetros do modelo (**\(w\)** e **\(b\)**), faz sentido afirmar que o resíduo acumulado do modelo (custo) é uma função dos parâmetros, certo? Por isso, esse cálculo se chama **Função de Custo**.
 
 !!! note 
     Para entender melhor, assista os vídeos 11 e 12 do curso do Andrew:
@@ -172,9 +184,9 @@ Como os resíduos dependem das previsões, e as previsões dependem dos parâmet
 
 A função de custo mais comum na regressão linear é o **MSE** (Mean Squared Error):
 
-$$
+\[
 MSE = \frac{1}{n} \sum_{i=1}^{n}(y_i - \hat{y}_i)^2
-$$
+\]
 
 Ela mede a média dos erros ao quadrado.
 
@@ -186,7 +198,7 @@ Ela mede a média dos erros ao quadrado.
 Por isso, treinar um modelo de regressão linear significa encontrar os parâmetros que **minimizam o MSE**.
 
 ??? question "Então, o que significa treinar o modelo na prática?"
-    No fundo, treinar significa procurar os valores de $w$ e $b$ que minimizam a função de custo.
+    No fundo, treinar significa procurar os valores de \(w\) e \(b\) que minimizam a função de custo.
 
     Uma forma clássica de fazer isso é por meio de algoritmos de otimização, como o **Gradiente Descendente**:
 
@@ -214,9 +226,9 @@ Cada uma responde a uma pergunta diferente:
 
 ### R² — Coeficiente de Determinação
 
-$$
+\[
 R^2 = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}
-$$
+\]
 
 O `R²` mede quanto da variação do target o modelo consegue explicar.
 
@@ -234,7 +246,9 @@ O `R²` mede quanto da variação do target o modelo consegue explicar.
 
 ### MAE — Erro Absoluto Médio
 
-$$MAE = \frac{1}{n}\sum|y_i - \hat{y}_i|$$
+\[
+MAE = \frac{1}{n}\sum|y_i - \hat{y}_i|
+\]
 
 O `MAE` mede, em média, o tamanho do erro do modelo na mesma unidade do problema.
 
@@ -248,7 +262,9 @@ O `MAE` mede, em média, o tamanho do erro do modelo na mesma unidade do problem
 
 ### RMSE — Raiz do Erro Quadrático Médio
 
-$$RMSE = \sqrt{\frac{1}{n}\sum(y_i - \hat{y}_i)^2}$$
+\[
+RMSE = \sqrt{\frac{1}{n}\sum(y_i - \hat{y}_i)^2}
+\]
 
 O `RMSE` também mede erro médio, mas dá mais peso para erros muito grandes.
 

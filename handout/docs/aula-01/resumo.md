@@ -8,14 +8,14 @@ Referência completa de tudo que foi visto na Aula 1. Use esta página para revi
 
 | Conceito | Fórmula | O que significa |
 |---|---|---|
-| **Regressão simples** | $\hat{y} = mx + b$ | Previsão com uma feature |
-| **Regressão múltipla** | $\hat{y} = \mathbf{w}^T \mathbf{x} + b$ | Previsão com várias features (produto escalar) |
-| **Forma matricial** | $\hat{\mathbf{y}} = X\mathbf{w} + b$ | Previsão para todo o dataset de uma vez |
-| **Resíduo** | $r_i = y_i - \hat{y}_i$ | Erro individual de cada amostra |
-| **MSE** | $\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}(y_i - \hat{y}_i)^2$ | Média dos erros ao quadrado: usada no treino |
-| **RMSE** | $\sqrt{MSE}$ | Erro médio na unidade original do problema |
-| **R²** | $1 - \dfrac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}$ | Fração da variância do target explicada pelo modelo |
-| **Equação Normal** | $\hat{\mathbf{w}} = (X^TX)^{-1}X^T\mathbf{y}$ | Solução fechada: encontra os pesos ótimos direto |
+| **Regressão simples** | \(\hat{y} = mx + b\) | Previsão com uma feature |
+| **Regressão múltipla** | \(\hat{y} = \mathbf{w}^T \mathbf{x} + b\) | Previsão com várias features (produto escalar) |
+| **Forma matricial** | \(\hat{\mathbf{y}} = X\mathbf{w} + b\) | Previsão para todo o dataset de uma vez |
+| **Resíduo** | \(r_i = y_i - \hat{y}_i\) | Erro individual de cada amostra |
+| **MSE** | \(\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}(y_i - \hat{y}_i)^2\) | Média dos erros ao quadrado: usada no treino |
+| **RMSE** | \(\sqrt{MSE}\) | Erro médio na unidade original do problema |
+| **R²** | \(1 - \dfrac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}\) | Fração da variância do target explicada pelo modelo |
+| **Equação Normal** | \(\hat{\mathbf{w}} = (X^TX)^{-1}X^T\mathbf{y}\) | Solução fechada: encontra os pesos ótimos direto |
 
 !!! tip "Como interpretar o R²"
     - **R² < 0.5** → modelo fraco, não captura os padrões principais
@@ -91,19 +91,19 @@ print(f"R² Teste: {r2:.4f}")
 ### Modelo
 
 **Parâmetros**
-: Os valores que o modelo aprende durante o treino, os pesos $\mathbf{w}$ e o intercepto $b$.
+: Os valores que o modelo aprende durante o treino, os pesos \(\mathbf{w}\) e o intercepto \(b\).
 
-**Intercepto ($b$)**
+**Intercepto (\(b\))**
 : Valor previsto pelo modelo quando todas as features são zero. Representa o "ponto de partida" da reta.
 
-**Peso ($w_i$)**
+**Peso (\(w_i\))**
 : Coeficiente associado a uma feature. Indica quanto o valor previsto muda ao aumentar aquela feature em 1 unidade, mantendo as demais fixas.
 
 **Produto escalar**
-: Operação entre dois vetores que multiplica elemento a elemento e soma tudo. É exatamente o que acontece quando o modelo faz uma previsão: $\hat{y} = \mathbf{w}^T\mathbf{x} + b$.
+: Operação entre dois vetores que multiplica elemento a elemento e soma tudo. É exatamente o que acontece quando o modelo faz uma previsão: \(\hat{y} = \mathbf{w}^T\mathbf{x} + b\).
 
 **Equação Normal**
-: Solução matemática fechada para encontrar os pesos ótimos da regressão linear sem iterações. Funciona bem para datasets pequenos, mas é computacionalmente caro para datasets grandes ($O(n^3)$).
+: Solução matemática fechada para encontrar os pesos ótimos da regressão linear sem iterações. Funciona bem para datasets pequenos, mas é computacionalmente caro para datasets grandes (\(O(n^3)\)).
 
 ---
 
@@ -113,7 +113,7 @@ print(f"R² Teste: {r2:.4f}")
 : Divisão do dataset em dois conjuntos: treino (o modelo aprende) e teste (avaliamos a performance real). O modelo nunca vê os dados de teste durante o treino.
 
 **Resíduo**
-: Diferença entre o valor real e o previsto para uma amostra: $r_i = y_i - \hat{y}_i$. Resíduos grandes indicam que o modelo está errando naquele ponto.
+: Diferença entre o valor real e o previsto para uma amostra: \(r_i = y_i - \hat{y}_i\). Resíduos grandes indicam que o modelo está errando naquele ponto.
 
 **MSE (Mean Squared Error)**
 : Média dos resíduos ao quadrado. Penaliza erros grandes de forma desproporcional e é a métrica minimizada durante o treino.
@@ -135,7 +135,7 @@ print(f"R² Teste: {r2:.4f}")
 : Quando o modelo é simples demais para capturar os padrões dos dados. R² baixo tanto no treino quanto no teste.
 
 **Multicolinearidade**
-: Quando duas ou mais features são altamente correlacionadas entre si. Isso torna a matriz $X^TX$ quase singular e distorce os coeficientes do modelo.
+: Quando duas ou mais features são altamente correlacionadas entre si. Isso torna a matriz \(X^TX\) quase singular e distorce os coeficientes do modelo.
 
 ---
 
@@ -190,14 +190,14 @@ Um modelo com R² = 0.91 no treino e R² = 0.43 no teste está provavelmente sof
 </quiz>
 
 <quiz>
-A Equação Normal $(X^TX)^{-1}X^Ty$ falha quando:
+A Equação Normal \((X^TX)^{-1}X^Ty\) falha quando:
 
 - [ ] O dataset tem mais de 10.000 amostras
 > O tamanho do dataset não impede a Equação Normal de funcionar — ela apenas fica mais lenta.
 - [x] Duas ou mais features são linearmente dependentes (redundantes)
-> Correto! Se duas features são redundantes, $X^TX$ se torna singular (não invertível) e a solução fechada não existe.
+> Correto! Se duas features são redundantes, \(X^TX\) se torna singular (não invertível) e a solução fechada não existe.
 - [ ] O target tem distribuição assimétrica
-> A distribuição do target não afeta a invertibilidade de $X^TX$.
+> A distribuição do target não afeta a invertibilidade de \(X^TX\).
 - [ ] O modelo está em overfitting
 > Overfitting não quebra a Equação Normal — é um problema de generalização, não de cálculo.
 </quiz>
