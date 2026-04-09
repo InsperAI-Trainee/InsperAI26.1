@@ -27,8 +27,6 @@ theme:
   features:
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
     - navigation.indexes
     - navigation.instant
     - navigation.tracking
@@ -53,7 +51,6 @@ markdown_extensions:
       permalink: true
   - pymdownx.arithmatex:
       generic: true
-      
 
 extra_javascript:
   - js/mathjax.js
@@ -63,47 +60,44 @@ extra_javascript:
 #   aula-02
 #   aula-03
 
-
 nav:
   - Início: index.md
-  - "Setup de ambiente" :
+  - "Setup de ambiente":
       - Introdução: aula-setup/docs/setup.md
       - "1. Git": aula-setup/docs/git.md
       - "2. GitHub": aula-setup/docs/github.md
-      - "3. Visual Studio Code (IDE)" : aula-setup/docs/vscode.md
-      - "4. UV" : aula-setup/docs/uv.md
+      - "3. Visual Studio Code (IDE)": aula-setup/docs/vscode.md
+      - "4. UV": aula-setup/docs/uv.md
       - "5. Primeiro handout": aula-setup/docs/primeiro-handout.md
       - "6. Fluxo com Git e GitHub": aula-setup/docs/fluxo-git-github.md
-
-  - "Aula 0 — Fundamentos":
-      - Introdução: aula-00/introducao.md
-      - História da IA: aula-00/historia.md
-      - "1. Python e NumPy": aula-00/python_numpy.md
-      - "2. Estatística e Probabilidade": aula-00/estatistica.md
-      - "3. O Que vem por 'AI'": aula-00/aprofundamento.md
-      - "4. Atividades": aula-00/atividades.md
-
-  - "Aula 1 — Workflow de ML e Regressão Linear":  
-      - "Introducão":
-          - "Visão Geral": aula-01/index.md
-          - "Regressão Linear": aula-01/teoria.md
-      - "Prática":
-          - "1. Notebook": aula-01/pratica.md
-          - "2. Exploração dos Dados": aula-01/exploracao.md
-          - "3. Outliers e Dados Suspeitos": aula-01/outliers.md
-          - "4. Treinando o Modelo": aula-01/treinamento.md
-          - "5. Leitura Complementar": aula-01/complementar.md
-          #- "6. Atividades": aula-01/atividades.md
-          #- "7. Resumo" : aula-01/resumo.md
-    
-  - "Aula 2 — Classificação e Regressão Logística":
-      - "Visão Geral": aula-02/index.md
-      - "1. O Problema de Classificação": aula-02/classificacao.md
-      - "2. Regressão Logística e Sigmoide": aula-02/logistica.md
-      - "3. Métricas e Trade-offs": aula-02/metricas.md
-      - "4. Prática": aula-02/pratica.md
-
-  - "Aula 3 — Otimização":
-      - "Visão Geral": aula-03/index.md
-      - "1. Gradient Descent": aula-03/gradient-descent.md
-      - "2. Prática": aula-03/pratica.md
+  - "Aulas":
+      - "Aula 0 — Fundamentos":
+          - Visão Geral: aula-00/introducao.md
+          - História da IA: aula-00/historia.md
+          - "1. Python e NumPy": aula-00/python_numpy.md
+          - "2. Estatística e Probabilidade": aula-00/estatistica.md
+          - "3. O Que vem por 'AI'": aula-00/aprofundamento.md
+          - "4. Atividades": aula-00/atividades.md
+      - "Aula 1 — Workflow de ML e Regressão Linear":
+          - "Introdução":
+              - "Visão Geral": aula-01/index.md
+              - "Regressão Linear": aula-01/teoria.md
+          - "Prática":
+              - "1. Notebook": aula-01/pratica.md
+              - "2. Exploração dos Dados": aula-01/exploracao.md
+              - "3. Outliers e Dados Suspeitos": aula-01/outliers.md
+              - "4. Treinando o Modelo": aula-01/treinamento.md
+              - "5. Leitura Complementar": aula-01/complementar.md
+      - "Aula 2 — Classificação e Regressão Logística":
+          - "Visão Geral": aula-02/index.md
+          - "1. O Problema de Classificação": aula-02/classificacao.md
+          - "2. Regressão Logística e Sigmoide": aula-02/logistica.md
+          - "3. Métricas e Trade-offs": aula-02/metricas.md
+          - "4. Prática": aula-02/pratica.md
+      - "Aula 3 — Otimização":
+          - "Visão Geral": aula-03/index.md
+          - "1. Gradient Descent": aula-03/gradient-descent.md
+          - "2. Prática": aula-03/pratica.md
+      - "Aula 4 — Redes Neurais":
+          - "Visão Geral": aula-04/index.md
+          - "1. Introdução": aula-04/introducao.md
