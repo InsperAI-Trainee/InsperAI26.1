@@ -35,3 +35,6 @@ O target é binário:
 ## Referências
 
 - **Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow** (Aurélien Géron) - Capítulos 3 e 4
+
+!!! Author
+    **Thomas Kassabian**

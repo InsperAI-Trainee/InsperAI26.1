@@ -92,3 +92,6 @@ Ao final desta introdução, a ideia não é dominar técnicas, mas sair com um 
 3. **Deep Learning é a parte do ML que mais vamos trabalhar**.
 
 ---
+
+!!! Author
+    **Gabriel Aguiar**

@@ -73,3 +73,8 @@ O **California Housing Dataset** é derivado do censo de 1990 do estado da Calif
 
 ## Referências
 - **Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow** (Aurélien Géron) - Capítulo 4
+
+!!! Author
+    - **Thomas Kassabian** 
+
+    - **Gabriel Aguiar**
