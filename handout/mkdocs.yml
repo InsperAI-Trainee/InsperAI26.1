@@ -100,4 +100,5 @@ nav:
           - "2. Prática": aula-03/pratica.md
       - "Aula 4 — Redes Neurais":
           - "Visão Geral": aula-04/index.md
-          - "1. Introdução": aula-04/introducao.md
+          - "1. Fundamentos": aula-04/introducao.md
+          - "2. Estrutura": aula-04/estrutura_redes.md

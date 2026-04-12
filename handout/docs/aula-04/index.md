@@ -25,7 +25,13 @@ Se prepara porque essa aula vai ser bem densa, com muitos conceitos novos, mas �
     > - [Essence of Linear Algebra](https://www.youtube.com/watch?v=kjBOesZCoqc&list=PLZHQObOWTQDMsr9K-fj53DwVRMYO3t5Yr)
 
 
+!!! WARNING "Aprendendo a Aprender"
+    A partir de agora, os conteúdos vão ficar mais complexos e a curva de aprendizado vai ser mais acentuada. Tenha ciência que, apenas lendo esse handout, ou apenas vendo essa aula, você vai saber de aproximadamente 10% do assunto(sendo bem otimista). O restante vem da sua vontade de aprender, seja se atualizando por revistas, papers, projetos, enfim.
 
+    Entenda que não queremos que você fique na sua zona de conforto, mas que você se desafie a aprender coisas novas. Essa metodologia vai muito além da inteligência artificial, é uma forma de aprender a aprender, e isso é o que vai te diferenciar.
+
+    Caso se interesse por tomar um tapa na cara de realidade, recomendamos o canal do Fabio Akita, um dos maiores especialistas em desenvolvimento de software do Brasil e uma grande inspiração profissional pra mim (Gabriel). Ele tem uma série de vídeos sobre "Aprendendo a Aprender" que é sensacional, e fala exatamente sobre isso: sair da zona de conforto, se desafiar, aprender coisas novas, e como isso é fundamental para o crescimento pessoal e profissional.
+    > - [Aprendendo a Aprender — Fabio Akita](https://www.youtube.com/watch?v=oUPaJxk6TZ0https://www.youtube.com/watch?v=oUPaJxk6TZ0)
 ---
 
 ## Referências

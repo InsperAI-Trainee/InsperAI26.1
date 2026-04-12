@@ -237,4 +237,7 @@ Um único neurônio não voa. Não foge. Não pousa. O comportamento emerge da *
 
 É por isso que o conectoma de 3.016 neurônios e 548.000 sinapses é tão revelador: ele nos mostra que inteligência, mesmo a mais simples, é uma propriedade **coletiva e estrutural**.
 
-Na próxima seção, vamos ver como empilhar perceptrons em camadas forma uma **Rede Neural Multicamada (MLP)** — e por que isso resolve o problema do XOR e muito mais.
+Na próxima seção, vamos ver como empilhar perceptrons em camadas forma uma **Rede Neural Multicamada (MLP)** e por que isso resolve tanta coisa.
+
+!!! INFO "Fórmulas matemáticas não estão aparecendo"
+    Se as fórmulas matemáticas não estão aparecendo, tente recarregar a página ou limpar o cache do navegador!
