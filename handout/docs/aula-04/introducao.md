@@ -46,10 +46,31 @@ O ponto crucial é o "se a estimulação for suficientemente forte". O neurônio
 No cérebro da larva de *Drosophila*, cada um dos 3.016 neurônios funciona exatamente assim: recebendo sinais de dezenas ou centenas de vizinhos, ponderando-os, e decidindo se dispara ou não.
 
 ---
+## O problema motivador
+
+Modelos lineares, como a Regressão Logística, são limitados na sua capacidade de capturar padrões complexos nos dados. Eles funcionam bem quando as classes são linearmente separáveis. No caso da Regressão Logística, como vimos anteriormente, o modelo tenta encontrar uma fronteira de decisão **LINEAR** que separa as classes (reta em 2D ou plano em 3D).
+
+Muitos problemas do mundo real envolvem dados que não são linearmente separáveis. Um exemplo clássico é o **problema XOR (exclusive OR)**, onde os pontos de diferentes classes não podem ser separados por uma linha reta.
+<div align="center">
+<img src="https://miro.medium.com/max/1400/1*Tc8UgR_fjI_h0p3y4H9MwA.png" alt="Linear vs Non-linear" width="600"/>
+<p><em>Exemplos de dados não-linearmente separáveis - Problema XOR</em></p>
+</div>
+
+À esquerda, estão os casos do AND e OR, onde as 2 possibilidades de saída (0 e 1) podem ser separadas por uma linha reta. No entanto, à direita, no caso do XOR, essa separação não é possível por uma linha reta. Isso ilustra a limitação dos modelos lineares.
+
+Além disso outros exemplos de dados não-linearmente separáveis incluem:
+
+1. **Círculos concêntricos**: Uma classe no centro, outra em volta
+2. **Espirais**: Classes entrelaçadas em padrões curvos
+3. **Imagens complexas**: Como distinguir entre diferentes peças de roupa no Fashion-MNIST
+
+Daí surge a necessidade de modelos mais complexos, como as Redes Neurais, que podem aprender fronteiras de decisão não-lineares, mas como?
+
+---
 ## Perceptron: o neurônio artificial
 
 Em 1958, Frank Rosenblatt propôs o **Perceptron**: um modelo matemático que captura
-exatamente essa lógica e funciona como a unidade básica da rede. Essencialmente, a rede neural é um conjunto de vários neurônios.
+exatamente a lógica do neurônio biológico e funciona como a unidade básica da rede. Essencialmente, a rede neural é um conjunto de vários neurônios.
 
 ### As entradas — $\mathbf{x}$ {: data-toc-label="As entradas" }
 
@@ -177,28 +198,6 @@ via backpropagation (Assunto para jajá).
     de saída de problemas de classificação binária.
 
 ---
-
-### Tanh: $\tanh(z) = \dfrac{e^z - e^{-z}}{e^z + e^{-z}}$ {: data-toc-label="Tanh" }
-
-A Tanh é uma versão **recentrada** da sigmoid: sua saída varia entre -1 e 1, com zero
-exatamente no meio. Essa simetria em torno da origem é importante porque faz com que
-as ativações dos neurônios sejam, em média, próximas de zero, o que **estabiliza
-o treinamento** e acelera a convergência em comparação com a sigmoid.
-
-$$
-\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}
-$$
-
-Pense nela como um neurônio que pode tanto **excitar** (saída positiva) quanto
-**inibir** (saída negativa), exatamente como sinapses excitatórias e inibitórias
-no cérebro biológico.
-
-!!! warning "Limitação da Tanh"
-    Assim como a sigmoid, a Tanh também satura nas extremidades. O problema do
-    *vanishing gradient* persiste, embora seja menos severo graças à simetria.
-
----
-
 ### ReLU: $\text{ReLU}(z) = \max(0, z)$ {: data-toc-label="ReLU" }
 
 A ReLU é a função de ativação mais usada em redes modernas, e sua fórmula não poderia
