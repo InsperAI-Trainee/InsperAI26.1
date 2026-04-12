@@ -35,19 +35,19 @@ Nas próximas seções, vamos entender **como redes neurais artificiais funciona
 
 Para entender redes neurais artificiais, precisamos primeiro olhar para o que elas imitam.
 
-Um neurônio biológico é uma célula specializada em transmitir informação. Ele recebe sinais elétricos pelos **dendritos**, integra esses sinais no **corpo celular (soma)** e, se a estimulação for suficientemente forte, dispara um impulso elétrico pelo **axônio** até as **sinapses**, onde o sinal é passado adiante para outros neurônios.
+Um neurônio biológico é uma célula especializada em transmitir informação. Ele recebe sinais elétricos pelos **dendritos**, integra esses sinais no **corpo celular (soma)** e, se a estimulação for suficientemente forte, dispara um impulso elétrico pelo **axônio** até as **sinapses**, onde o sinal é passado adiante para outros neurônios.
 
 O ponto crucial é o "se a estimulação for suficientemente forte". O neurônio não transmite tudo que recebe: ele tem um **limiar de ativação**. Abaixo do limiar, silêncio. Acima, disparo.
 
 No cérebro da larva de *Drosophila*, cada um dos 3.016 neurônios funciona exatamente assim: recebendo sinais de dezenas ou centenas de vizinhos, ponderando-os, e decidindo se dispara ou não.
 
 ---
-## O Perceptron
+## O Perceptron: a unidade fundamental da rede
 
 Em 1958, Frank Rosenblatt propôs o **Perceptron**: um modelo matemático que captura
 exatamente essa lógica.
 
-### As entradas — $\mathbf{x}$
+### As entradas — $\mathbf{x}$ {: data-toc-label="As entradas" }
 
 Tudo começa com um vetor de entradas:
 
@@ -59,7 +59,7 @@ Cada $x_i$ é um valor numérico que representa uma característica do dado. No 
 pense em cada $x_i$ como o sinal elétrico chegando por um dendrito diferente: uma
 intensidade de luz, uma vibração, um odor químico.
 
-### Os pesos — $\mathbf{w}$
+### Os pesos — $\mathbf{w}$ {: data-toc-label="Os pesos" }
 
 Para cada entrada $x_i$, existe um peso $w_i$ associado:
 
@@ -76,7 +76,7 @@ o inverte, o neurônio é *inibido* por aquela entrada.
     têm pesos altos (favorecem spam). A palavra "reunião" tem peso baixo ou negativo.
     O perceptron faz exatamente isso: pondera cada evidência antes de decidir.
 
-### A soma ponderada — $z$
+### A soma ponderada — $z$ {: data-toc-label="A soma ponderada" }
 
 O neurônio combina entradas e pesos com uma **soma ponderada**:
 
@@ -106,7 +106,7 @@ permitindo o produto interno com $\mathbf{x}$. O resultado é um único número 
     as entradas relevantes têm valores altos *e* pesos altos: $z$ cresce. Quando não estão
     alinhados, $z$ permanece pequeno. É uma medida de **similaridade ponderada**.
 
-### O bias — $b$
+### O bias — $b$ {: data-toc-label="O bias" }
 
 O bias $b$ é um valor escalar somado independentemente de qualquer entrada. Ele controla
 o **limiar de ativação** do neurônio: quanto maior o $b$, mais fácil é para o neurônio
@@ -148,7 +148,7 @@ Cada $f_i$ introduz uma dobra no espaço, e é a combinação dessas dobras que 
 
 ---
 
-### Sigmoid: $\sigma(z) = \dfrac{1}{1 + e^{-z}}$
+### Sigmoid: $\sigma(z) = \dfrac{1}{1 + e^{-z}}$ {: data-toc-label="Sigmoid" }
 
 A sigmoid transforma qualquer valor real em um número entre 0 e 1. Isso a torna
 naturalmente interpretável como uma **probabilidade**: quanto mais positivo o $z$,
@@ -172,7 +172,7 @@ via backpropagation (Assunto para jajá).
 
 ---
 
-### Tanh: $\tanh(z) = \dfrac{e^z - e^{-z}}{e^z + e^{-z}}$
+### Tanh: $\tanh(z) = \dfrac{e^z - e^{-z}}{e^z + e^{-z}}$ {: data-toc-label="Tanh" }
 
 A Tanh é uma versão **recentrada** da sigmoid: sua saída varia entre -1 e 1, com zero
 exatamente no meio. Essa simetria em torno da origem é importante porque faz com que
@@ -193,7 +193,7 @@ no cérebro biológico.
 
 ---
 
-### ReLU: $\text{ReLU}(z) = \max(0, z)$
+### ReLU: $\text{ReLU}(z) = \max(0, z)$ {: data-toc-label="ReLU" }
 
 A ReLU é a função de ativação mais usada em redes modernas, e sua fórmula não poderia
 ser mais simples: **se o valor é negativo, zera; se é positivo, passa intacto.**

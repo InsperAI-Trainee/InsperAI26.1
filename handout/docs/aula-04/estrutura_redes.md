@@ -6,7 +6,7 @@ De início, uma rede neural pode parecer um emaranhado de conexões sem sentido,
 
 ## Estrutura de uma Rede Neural
 
-![MLP](../imgs/mlp.jpg)
+![MLP](./imgs/mlp.jpg)
 
 Um MLP é composto por 3 tipos de camadas:
 

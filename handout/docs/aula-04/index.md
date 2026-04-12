@@ -26,7 +26,7 @@ Se prepara porque essa aula vai ser bem densa, com muitos conceitos novos, mas �
 
 
 !!! WARNING "Aprendendo a Aprender"
-    A partir de agora, os conteúdos vão ficar mais complexos e a curva de aprendizado vai ser mais acentuada. Tenha ciência que, apenas lendo esse handout, ou apenas vendo essa aula, você vai saber de aproximadamente 10% do assunto(sendo bem otimista). O restante vem da sua vontade de aprender, seja se atualizando por revistas, papers, projetos, enfim.
+    A partir de agora, os conteúdos vão ficar mais complexos e a curva de aprendizado vai ser mais acentuada. Tenha ciência que, apenas lendo esse handout, ou apenas vendo essa aula, você vai saber de aproximadamente 10% do assunto (sendo bem otimista). O restante vem da sua vontade de aprender, seja se atualizando por revistas, papers, projetos, enfim.
 
     Entenda que não queremos que você fique na sua zona de conforto, mas que você se desafie a aprender coisas novas. Essa metodologia vai muito além da inteligência artificial, é uma forma de aprender a aprender, e isso é o que vai te diferenciar.
 
