@@ -1,5 +1,9 @@
 # Introdução às Redes Neurais
 
+!!! INFO "Fórmulas matemáticas não aparecem"
+    Se as fórmulas matemáticas não estiverem aparecendo, tente recarregar a página. Se mesmo assim não funcionar, limpe o cache do seu navegador.
+
+
 ## O que é uma mosca?
 Sério, o que é uma mosca?
 ??? question "Reflita antes de continuar"
@@ -42,10 +46,10 @@ O ponto crucial é o "se a estimulação for suficientemente forte". O neurônio
 No cérebro da larva de *Drosophila*, cada um dos 3.016 neurônios funciona exatamente assim: recebendo sinais de dezenas ou centenas de vizinhos, ponderando-os, e decidindo se dispara ou não.
 
 ---
-## O Perceptron: a unidade fundamental da rede
+## Perceptron: o neurônio artificial
 
 Em 1958, Frank Rosenblatt propôs o **Perceptron**: um modelo matemático que captura
-exatamente essa lógica.
+exatamente essa lógica e funciona como a unidade básica da rede. Essencialmente, a rede neural é um conjunto de vários neurônios.
 
 ### As entradas — $\mathbf{x}$ {: data-toc-label="As entradas" }
 
@@ -126,6 +130,8 @@ $$
     dos padrões reais.
 
     (Vou martelar bastante isso: caso esteja com dificuldade de visualizar, veja a playlist de Álgebra Linear do 3Blue1Brown!)
+
+Até aqui, o neurônio só calculou um valor linear, $z = \mathbf{w}^\top \mathbf{x} + b$. Mas esse número, sozinho, ainda não diz **o que fazer com a informação**: repassar o sinal? bloqueá-lo? amplificá-lo? É exatamente aqui que entra a função de ativação.
 
 ## A função de ativação
 
@@ -229,6 +235,26 @@ aprender qualquer padrão (inclusive o anel que nenhuma reta consegue separar).
 
 ---
 
+## Em resumo
+
+
+Em essência, o perceptron é a **unidade básica** de uma rede neural. Ele:
+
+- recebe entradas, 
+- calcula uma soma ponderada, 
+- aplica uma função de ativação,
+- produz uma saída. 
+
+Sozinho, faz uma decisão simples. Em conjunto, vira parte de uma computação muito maior.
+
+<div align="center">
+  <img src="https://media.geeksforgeeks.org/wp-content/uploads/20251209120638608023/bhu.webp" alt="Perceptron">
+</div>
+
+Quando combinamos vários neurônios, a saída de uns passa a servir de entrada para outros. Em outras palavras: uma rede neural é, no fundo, uma composição de muitos perceptrons, organizados para transformar sinais simples em decisões complexas.
+
+---
+
 ## De volta à mosca
 
 Voltemos à pergunta do início: *o que define uma mosca?*
@@ -238,6 +264,3 @@ Um único neurônio não voa. Não foge. Não pousa. O comportamento emerge da *
 É por isso que o conectoma de 3.016 neurônios e 548.000 sinapses é tão revelador: ele nos mostra que inteligência, mesmo a mais simples, é uma propriedade **coletiva e estrutural**.
 
 Na próxima seção, vamos ver como empilhar perceptrons em camadas forma uma **Rede Neural Multicamada (MLP)** e por que isso resolve tanta coisa.
-
-!!! INFO "Fórmulas matemáticas não estão aparecendo"
-    Se as fórmulas matemáticas não estão aparecendo, tente recarregar a página ou limpar o cache do navegador!
