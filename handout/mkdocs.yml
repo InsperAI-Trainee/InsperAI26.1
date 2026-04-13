@@ -55,6 +55,10 @@ markdown_extensions:
 extra_javascript:
   - js/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - js/extra.js
+
+extra_css:
+  - css/extra.css
 
 # draft_docs: |
 #   aula-02
@@ -62,6 +66,7 @@ extra_javascript:
 
 nav:
   - Início: index.md
+  - Utilidades: utils/utilidades.md
   - "Setup de ambiente":
       - Introdução: aula-setup/docs/setup.md
       - "1. Git": aula-setup/docs/git.md

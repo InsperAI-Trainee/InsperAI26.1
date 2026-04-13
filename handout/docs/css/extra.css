@@ -1,0 +1,26 @@
+.lazy-embed button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.lazy-embed button:hover {
+  opacity: 0.85;
+}
+
+.lazy-embed iframe {
+  width: 100%;
+  height: 680px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 12px;
+}
