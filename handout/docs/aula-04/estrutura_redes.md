@@ -93,13 +93,15 @@ Para o problema hipotético, foram definidas as seguintes dimensões para a rede
 
 - Camada 4 (Output Layer): ?
 
+Considerando que o modelo quer fazer a classificação **binária** de uma **imagem 28x28**:
+
 ??? question "Quantos neurônios deve ter a camada de entrada?"
     Cada neurônio da camada de entrada recebe uma feature dos dados de entrada. No caso da imagem, as features são os pixels, então precisamos de um neurônio para cada pixel. Portanto, são **784** neurônios.
 
 ??? question "Quantos neurônios deve ter a camada de saída?"
     Cada neurônio produz uma única saída, um valor. Se o problema é de classificação binária, precisamos de apenas um valor: a probabilidade da entrada ser da classe positiva. Portanto, apenas **1** neurônio.
 
-### Etapas
+### Etapas da inferência
 
 **Passo 1: Preparação da entrada**
 
