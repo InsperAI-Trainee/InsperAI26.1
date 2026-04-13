@@ -1,7 +1,7 @@
 # Introdução às Redes Neurais
 
 !!! INFO "Fórmulas matemáticas não aparecem"
-    Se as fórmulas matemáticas não estiverem aparecendo, tente recarregar a página. Se mesmo assim não funcionar, limpe o cache do seu navegador.
+    Se as fórmulas matemáticas não estiverem aparecendo corretamente, tente recarregar a página. Se mesmo assim não funcionar, limpe o cache do seu navegador.
 
 
 ## O que é uma mosca?

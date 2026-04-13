@@ -1,5 +1,20 @@
 # Aula 4 — Redes Neurais
 
+!!! NOTE "Vídeos"
+    Antes de começar, assista os seguintes vídeos do curso de Machine Learning do Andrew Ng. São essenciais para compreender o conteúdo.
+
+    - [Introdução a Redes Neurais e Forward Propagation](hhttps://www.youtube.com/watch?v=1EyZqvauyPc&list=PLWD7QtH5pagR1NEm57VeHeFIzWVFhAtcX) (Vídeos 1 a 7)
+    - [Construindo Redes Neurais em Código](https://www.youtube.com/watch?v=2XX4GUOGGKs&list=PLyoNSC4BT4eVpykPF0Yx8C1Zs50XtD17L&index=2) (Vídeos 7 a 9)
+    - [Vetorização - Multiplicação de matrizes](https://www.youtube.com/watch?v=5Qh841Qh4tM&list=PLyoNSC4BT4eVpykPF0Yx8C1Zs50XtD17L&index=14&ab_channel=MyCourse) (Vídeos 14 a 16)
+    - [Outras Funções de Ativação](https://www.youtube.com/watch?v=fp2XpdsDarY&list=PLyoNSC4BT4eVpykPF0Yx8C1Zs50XtD17L&index=14) (Vídeos 19 a 21)
+
+    Adicionalmente, um vídeo com outra abordagem pedagógica interessante, do 3Blue1Brown:
+
+    - [But what is a neural network? | Deep learning chapter 1](https://www.youtube.com/watch?v=aircAruvnKk)
+
+    
+
+
 Nesta aula, vamos entender o que são as redes neurais artificiais, como elas se inspiram no cérebro humano e porque são a base do Deep Learning.
 
 Se prepara porque essa aula vai ser bem densa, com muitos conceitos novos, mas é fundamental para entender o que vem a seguir.
@@ -9,11 +24,12 @@ Se prepara porque essa aula vai ser bem densa, com muitos conceitos novos, mas �
 ## Nesta aula veremos:
 
 - O neurônio artificial e sua analogia biológica
-- O Perceptron e suas limitações
-- Funções de ativação — sigmoid, tanh e ReLU
-- Redes Multicamada (MLP) e o forward pass
+- Limitação dos modelos lineares
+- O Perceptron
+- Funções de ativação — sigmoid, ReLU e Softmax
+- Redes Multicamada (MLP) e o forward propagation
 - Treinamento — backpropagation e gradient descent aplicados
-- Implementação prática com Keras
+- Implementação prática com TensorFlow/Keras
 
 
 !!! Tip "Recomendações de vídeo"
