@@ -12,8 +12,6 @@
 
     - [But what is a neural network? | Deep learning chapter 1](https://www.youtube.com/watch?v=aircAruvnKk)
 
-    
-
 
 Nesta aula, vamos entender o que são as redes neurais artificiais, como elas se inspiram no cérebro humano e porque são a base do Deep Learning.
 
