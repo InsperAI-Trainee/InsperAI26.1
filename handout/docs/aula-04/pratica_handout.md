@@ -1,5 +1,14 @@
 # Prática
 
+Clone o repositório da prática no link:
+
+- [Link do Classroom](https://classroom.github.com/a/OJ5xvBLX)
+
+!!! NOTE "Revisão"
+    No repositório, existe o notebook `revisao.ipynb`, que contém visualizações interativas do conteúdo essencial de Machine Learning.
+
+    Não é obrigatório, mas com certeza vai ajudar a firmar a intuição
+
 !!! NOTE "Vídeos"
     Antes de começar a prática, assista os seguintes vídeos:
 
@@ -85,9 +94,3 @@ Pense no seguinte fluxo, imaginando uma rede que a última camada oculta tem 64 
 6. Usar pesos pré-treinados para gerar previsões no conjunto de teste.
 7. Calcular a acurácia do modelo.
 8. Comparar o resultado com uma implementação equivalente em um framework de alto nível: **TensorFlow/Keras**.
-
----
-
-## Entrega
-
-[Link do Classroom]()
