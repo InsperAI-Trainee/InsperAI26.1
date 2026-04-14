@@ -57,4 +57,5 @@ GÉRON, Aurélien. **Hands-On Machine Learning with Scikit-Learn, Keras, and Ten
 - Capítulo 11 — *Training Deep Neural Networks*
 
 !!! Author
-    **Gabriel Aguiar**
+    - **Gabriel Aguiar**
+    - **Thomas Kassabian**
