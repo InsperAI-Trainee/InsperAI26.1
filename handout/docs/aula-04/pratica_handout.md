@@ -7,7 +7,7 @@ Clone o repositório da prática no link:
 A atividade deve ser entregue até dia **22/04 às 23h59**.
 
 !!! NOTE "Revisão"
-    No repositório, existe o notebook `revisao.ipynb`, que contém visualizações interativas do conteúdo essencial de Machine Learning.
+    No repositório, existe o notebook `revisao.ipynb`, que contém uma atividade de revisão com visualizações interativas do conteúdo essencial de Machine Learning.
 
     Não é obrigatório, mas com certeza vai ajudar a firmar a intuição
 
