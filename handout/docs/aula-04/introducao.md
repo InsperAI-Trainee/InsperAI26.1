@@ -226,14 +226,6 @@ a ReLU é apenas uma comparação com zero: ordens de grandeza mais rápida.
 
 ---
 
-![Funções de Ativação](imgs/02_funcoes_ativacao.png)
-
-As três funções têm personalidades distintas, mas compartilham o mesmo papel: introduzir
-a não-linearidade que transforma uma pilha de operações lineares em um modelo capaz de
-aprender qualquer padrão (inclusive o anel que nenhuma reta consegue separar).
-
----
-
 ## Em resumo
 
 
