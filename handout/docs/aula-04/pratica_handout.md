@@ -4,6 +4,8 @@ Clone o repositório da prática no link:
 
 - [Link do Classroom](https://classroom.github.com/a/OJ5xvBLX)
 
+A atividade deve ser entregue até dia **22/04 às 23h59**.
+
 !!! NOTE "Revisão"
     No repositório, existe o notebook `revisao.ipynb`, que contém visualizações interativas do conteúdo essencial de Machine Learning.
 
