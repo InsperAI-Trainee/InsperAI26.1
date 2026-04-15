@@ -3,7 +3,7 @@
 !!! NOTE "Vídeos"
     Antes de começar, assista os seguintes vídeos do curso de Machine Learning do Andrew Ng. São essenciais para compreender o conteúdo.
 
-    - [Introdução a Redes Neurais e Forward Propagation](hhttps://www.youtube.com/watch?v=1EyZqvauyPc&list=PLWD7QtH5pagR1NEm57VeHeFIzWVFhAtcX) (Vídeos 1 a 7)
+    - [Introdução a Redes Neurais e Forward Propagation](https://www.youtube.com/watch?v=1EyZqvauyPc&list=PLWD7QtH5pagR1NEm57VeHeFIzWVFhAtcX) (Vídeos 1 a 7)
     - [Construindo Redes Neurais em Código](https://www.youtube.com/watch?v=2XX4GUOGGKs&list=PLyoNSC4BT4eVpykPF0Yx8C1Zs50XtD17L&index=2) (Vídeos 7 a 9)
     - [Vetorização - Multiplicação de matrizes](https://www.youtube.com/watch?v=5Qh841Qh4tM&list=PLyoNSC4BT4eVpykPF0Yx8C1Zs50XtD17L&index=14&ab_channel=MyCourse) (Vídeos 14 a 16)
     - [Outras Funções de Ativação](https://www.youtube.com/watch?v=fp2XpdsDarY&list=PLyoNSC4BT4eVpykPF0Yx8C1Zs50XtD17L&index=14) (Vídeos 19 a 21)
