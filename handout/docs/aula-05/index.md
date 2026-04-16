@@ -16,10 +16,6 @@ Nesta aula, vamos dar o próximo passo: usar um framework de verdade para **cons
 - O papel da `BatchNormalization`
 - Como reduzir overfitting com L2 e `Dropout`
 
-!!! info "A ideia central"
-    Construir modelo é a parte fácil.
-    O difícil é construir um modelo que aprenda o padrão certo, em vez de decorar ruído.
-
 ---
 
 ## Estrutura da Aula
@@ -33,11 +29,14 @@ Esta aula está dividida em duas partes:
 
 ## Referências
 
+Machine Learning Specialization - Andrew Ng, DeepLearning.AI em colaboração com Stanford Online:
+
+Deep Learning Specialization — Andrew Ng, DeepLearning.AI
+
 GÉRON, Aurélien. **Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow**.
 3. ed. Sebastopol: O'Reilly Media, 2022.
 
 - Capítulo 10 — *Introduction to Artificial Neural Networks with Keras*
-- Capítulo 11 — *Training Deep Neural Networks*
 
 !!! Author
     - **Thomas Kassabian**
