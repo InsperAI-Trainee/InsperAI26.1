@@ -35,32 +35,18 @@ Em outras palavras: o Keras é a interface que você usa; o TensorFlow é o moto
 Ao invés de construir passo a passo, vamos destrinchar um código completo. Abaixo está um exemplo de MLP para classificação multiclasse com imagens `32x32`.
 
 ```python
-import tensorflow as tf
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Flatten, BatchNormalization, Activation
+from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.optimizers import Adam
 
 model = Sequential([
     Flatten(input_shape=(32, 32)),
-    Dense(1024),
-    BatchNormalization(),
-    Activation('relu'),
 
-    Dense(512),
-    BatchNormalization(),
-    Activation('relu'),
-
-    Dense(256),
-    BatchNormalization(),
-    Activation('relu'),
-
-    Dense(128),
-    BatchNormalization(),
-    Activation('relu'),
-
-    Dense(64),
-    BatchNormalization(),
-    Activation('relu'),
+    Dense(1024, activation='relu'),
+    Dense(512, activation='relu'),
+    Dense(256, activation='relu'),
+    Dense(128, activation='relu'),
+    Dense(64, activation='relu'),
 
     Dense(10, activation='softmax'),
 ])
@@ -93,11 +79,7 @@ O `Sequential` é a forma mais simples de criar uma rede neural no Keras. Você 
 ```python
 model = Sequential([
     Flatten(input_shape=(32, 32)),
-
-    Dense(1024),
-    BatchNormalization(),
-    Activation('relu'),
-
+    Dense(1024, activation='relu'),
     Dense(10, activation='softmax'),
 ])
 ```
@@ -119,52 +101,23 @@ Sem isso, uma camada `Dense` não sabe como receber a imagem diretamente.
 ### `Dense`
 
 ```python
-Dense(1024)
+Dense(1024, activation='relu')
 ```
 
 `Dense` é a camada totalmente conectada.
 Cada neurônio recebe todas as ativações da camada anterior.
 
-O principal parâmetro é:
+Os principais parâmetros aqui são:
 
 - `units`: número de neurônios da camada
+- `activation`: função de ativação aplicada na saída da camada
 
-Você também pode passar a ativação direto:
+Exemplos:
 
 ```python
+Dense(128, activation='relu')
 Dense(10, activation='softmax')
 ```
-
-Ou separar a ativação em outra camada, como no caso abaixo:
-
-```python
-Dense(256)
-BatchNormalization()
-Activation('relu')
-```
-
-### `BatchNormalization`
-
-```python
-BatchNormalization()
-```
-
-Essa camada normaliza as ativações intermediárias do modelo durante o treinamento. Na prática, ela ajuda a estabilizar a distribuição dos valores que passam pela rede, o que normalmente melhora a otimização.
-
-Não é mágica. Ela não conserta um modelo ruim. Mas costuma deixar o treino menos instável.
-
-### `Activation`
-
-```python
-Activation('relu')
-```
-
-Aqui a ativação foi separada da camada `Dense`.
-Isso deixa explícita a ordem:
-
-1. transformação linear
-2. normalização
-3. não-linearidade
 
 No exemplo, usamos:
 
@@ -201,6 +154,11 @@ model.compile(
 optimizer=Adam(learning_rate=0.001)
 ```
 
+!!! NOTE "Vídeo"
+    Assista o vídeo do curso de Machine Learning do Andrew para entender o que é o otimizador Adam
+    
+    - [Otimização Avançada](https://www.youtube.com/watch?v=YWkVy--ZZe0&list=PLyoNSC4BT4eVpykPF0Yx8C1Zs50XtD17L&index=21) (Vídeo 27)
+
 O otimizador decide como os pesos serão atualizados a partir do gradiente.
 
 O **Adam** é uma escolha padrão muito forte porque combina:
@@ -228,12 +186,6 @@ Nesse caso, usamos `sparse_categorical_crossentropy`, que é apropriada quando:
 - o problema é **multiclasse**
 - os rótulos são inteiros, como `0, 1, 2, ..., 9`
 
-!!! danger "Erro comum"
-    Não misture formato do target com a loss.
-
-    - `sparse_categorical_crossentropy`: labels inteiros
-    - `categorical_crossentropy`: labels em one-hot encoding
-
 Se você errar esse pareamento, o treino até pode rodar, mas o resultado pode ficar errado ou inconsistente.
 
 ### `metrics`
@@ -259,14 +211,22 @@ Depois de construir e compilar o modelo, vem o treinamento.
 model.fit(X_train_normalized, y_train, epochs=20)
 ```
 
-Esse comando faz o ciclo completo:
+Esse comando inicia o treinamento do modelo usando os dados de entrada `X_train_normalized` e os rótulos `y_train`.
+
+Na prática, o `fit` pega o conjunto de treino, divide esse conjunto em blocos menores e repete o ciclo de treinamento nesses blocos ao longo das épocas.
+
+Em cada bloco, ele faz:
 
 1. forward propagation
 2. cálculo da loss
 3. backpropagation
 4. atualização dos pesos
 
-Isso se repete ao longo das épocas.
+Isso se repete várias vezes dentro de cada época.
+
+!!! note "Ponto importante"
+    O modelo não espera terminar a época inteira para atualizar os pesos.
+    As atualizações acontecem **a cada batch**.
 
 ### Parâmetros mais importantes
 
@@ -283,10 +243,35 @@ history = model.fit(
 
 - `x`: features de treino
 - `y`: rótulos de treino
-- `epochs`: quantas vezes o modelo verá o conjunto de treino inteiro
+- `epochs`: quantas vezes o modelo verá o conjunto de treino inteiro, ou seja, quantas etapas de treinamento.
 - `batch_size`: quantas amostras são processadas antes de atualizar os pesos
 - `validation_split`: fração do treino separada para validação
 - `verbose`: nível de detalhe mostrado no terminal
+
+### Entendendo melhor o `batch_size`
+
+O `batch_size` define o tamanho de cada lote usado no treinamento.
+
+Se você tiver `60000` amostras e usar:
+
+```python
+batch_size=128
+```
+
+então, em uma época, o modelo vai percorrer o conjunto em vários lotes de 128 amostras e atualizar os pesos várias vezes ao longo desse percurso.
+
+Ou seja:
+
+- `epochs` controla **quantas passadas completas** pelo dataset serão feitas
+- `batch_size` controla **quantas amostras entram em cada atualização**
+
+Na prática:
+
+- `batch_size` menor: mais atualizações por época, treino mais ruidoso
+- `batch_size` maior: menos atualizações por época, treino mais estável e mais pesado em memória
+
+Não existe valor mágico.
+É uma escolha de compromisso entre estabilidade, custo computacional e comportamento do treino.
 
 O retorno do `fit` normalmente é armazenado em `history`.
 Isso é útil porque o histórico guarda métricas por época, o que ajuda a detectar overfitting depois.
@@ -350,4 +335,4 @@ model.evaluate(...)
 
 Simples na interface.
 Menos simples no que acontece por baixo.
-Mas a grande vantagem é essa: você já entendeu a teoria na aula anterior, então agora pode usar o framework sem virar apertador de botão.
+Mas a grande vantagem é essa: você já entendeu (ou deveria ter entendido) a teoria na aula anterior!
