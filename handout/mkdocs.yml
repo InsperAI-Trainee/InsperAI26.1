@@ -61,8 +61,7 @@ extra_css:
   - css/extra.css
 
 # draft_docs: |
-#   aula-02
-#   aula-03
+#   aula-x
 
 nav:
   - Início: index.md
