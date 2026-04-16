@@ -1,5 +1,5 @@
 !!! note "Consulta"
-    O conteúdo de introdução e das ferramentas pode, e deve, servir como fonte de consulta futura. É pra isso que serve o material!
+    O conteúdo dos handouts pode, e deve, servir como fonte de consulta futura. É pra isso que serve o material!
 
 
 # Aula 0 - Introdução aos Fundamentos de IA
