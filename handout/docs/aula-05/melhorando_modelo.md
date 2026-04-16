@@ -15,6 +15,11 @@ Nesta página, o foco é pragmático: como sair de um modelo que apenas existe p
 
 ## Normalizando os Dados de Treino
 
+!!! Note "Vídeos" 
+    Assista os vídeos do curso de Machine Learning do Andrew Ng para entender melhor a intuição por trás de transformar features. Não se apegue aos detalhes matemáticos, o foco é entender o problema:
+
+    - [Feature Scaling](https://www.youtube.com/watch?v=YVtP5UGdgXg&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=25) (Vídeos 25 e 26)
+
 Antes de discutir arquitetura ou regularização, comece pelo básico.
 
 Se as entradas chegam em escalas ruins, o treinamento fica mais difícil do que precisava ser. O otimizador precisa lidar com gradientes desequilibrados, algumas features dominam outras e a convergência tende a piorar.
@@ -71,6 +76,11 @@ Depois que os dados estão em ordem, os dois hiperparâmetros que mais mudam o c
 Se você errar feio nesses dois, o resto da arquitetura quase não importa.
 
 ### `learning_rate`
+
+!!! NOTE "Vídeos"
+    Assista os vídeos do curso de Machine Learning do Andrew Ng para entender melhor como escolher o learning rate:
+
+    - [Escolhendo o Learning Rate](https://www.youtube.com/watch?v=5g4H5_gsTpU&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=27) (Vídeos 27 e 28)
 
 O `learning_rate` define o tamanho do passo dado pelo otimizador a cada atualização.
 
@@ -232,6 +242,13 @@ Colocar por reflexo é só ruído arquitetural.
 ## Overfitting
 
 ### O que é Overfitting
+
+!!! NOTE "Vídeo"
+    Assista os vídeos do curso de Machine Learning do Andrew Ng para entender melhor o problema do overfitting e como mitigá-lo:
+
+    - [Overfitting](https://www.youtube.com/watch?v=8upNQi-40Q8&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=37) (Vídeos 37 a 39)
+
+    - [Bias and Variance](https://www.youtube.com/watch?v=OSRZMyN3Mws&list=PLyoNSC4BT4eVpykPF0Yx8C1Zs50XtD17L&index=28) (vídeos 35,  36 e 40)
 
 Depois que o treino ficou estável, aparece outro problema: o modelo pode ficar bom demais no treino e piorar fora dele.
 
