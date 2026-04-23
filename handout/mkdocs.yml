@@ -49,6 +49,7 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - attr_list
+  - md_in_html
   - tables
   - toc:
       permalink: true
@@ -117,3 +118,15 @@ nav:
           - Visão Geral: aula-05/index.md
           - "1. Construindo um MLP com TensorFlow/Keras": aula-05/construcao_modelos.md
           - "2. Melhorando o Modelo": aula-05/melhorando_modelo.md
+      - "Aula 6 — Visão Computacional e CNNs":
+          - "Visão Geral": aula-06/index.md
+          - "1. Por que MLPs falham em imagens": aula-06/visao_computacional.md
+          - "2. A operação de convolução": aula-06/convolucao.md
+          - "3. Arquitetura de uma CNN": aula-06/arquitetura_cnn.md
+          - "Prática": aula-06/pratica_handout.md
+      - "Aula 7 — ResNet e Transfer Learning":
+          - "Visão Geral": aula-07/index.md
+          - "1. Redes profundas e ResNets": aula-07/resnet.md
+          - "2. Arquiteturas de CNNs": aula-07/arquiteturas_cnn.md
+          - "3. Transfer Learning": aula-07/transfer_learning.md
+          - "Prática": aula-07/pratica_handout.md
