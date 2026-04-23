@@ -11,6 +11,28 @@ window.MathJax = {
   }
 };
 
+function typesetMath(retries = 20) {
+  if (!window.MathJax || typeof window.MathJax.typesetPromise !== "function") {
+    if (retries > 0) {
+      window.setTimeout(() => typesetMath(retries - 1), 150);
+    }
+    return;
+  }
+
+  const run = () => window.MathJax.typesetPromise();
+
+  if (window.MathJax.startup?.promise) {
+    window.MathJax.startup.promise.then(run);
+    return;
+  }
+
+  run();
+}
+
 document$.subscribe(() => {
-  MathJax.typesetPromise();
+  typesetMath();
+});
+
+window.addEventListener("load", () => {
+  typesetMath();
 });
