@@ -10,29 +10,25 @@ theme:
   language: pt-BR
   palette:
     - scheme: default
-      primary: blue grey
-      accent: teal
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/weather-night
-        name: Modo escuro
+        icon: material/brightness-7
+        name: Switch to dark mode
     - scheme: slate
-      primary: blue grey
-      accent: teal
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/weather-sunny
-        name: Modo claro
-  font:
-    text: Inter
-    code: JetBrains Mono
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.indexes
     - navigation.sections
     - navigation.instant
-    - navigation.path
     - navigation.top
     - navigation.tracking
+    - navigation.path
     - content.code.copy
-    - toc.integrate
     - toc.follow
 
 plugins:
@@ -68,26 +64,30 @@ extra_css:
 
 nav:
   - Início: index.md
+
   - Guia:
       - Utilidades: utils/utilidades.md
-      - Setup de ambiente:
-          - Introdução: aula-setup/docs/setup.md
+      - Ambiente e Workflow:
+          - Visão Geral: aula-setup/docs/setup.md
           - "1. Git": aula-setup/docs/git.md
           - "2. GitHub": aula-setup/docs/github.md
-          - "3. Visual Studio Code (IDE)": aula-setup/docs/vscode.md
+          - "3. Visual Studio Code": aula-setup/docs/vscode.md
           - "4. UV": aula-setup/docs/uv.md
           - "5. Primeiro handout": aula-setup/docs/primeiro-handout.md
           - "6. Fluxo com Git e GitHub": aula-setup/docs/fluxo-git-github.md
+
   - Projetos:
       - "Challenge 1 — MNIST": projetos/challenge-1.md
+
   - Aulas:
       - "Aula 0 — Fundamentos":
-          - Visão Geral: aula-00/introducao.md
+          - Introdução: aula-00/introducao.md
           - História da IA: aula-00/historia.md
           - "1. Python e NumPy": aula-00/python_numpy.md
           - "2. Estatística e Probabilidade": aula-00/estatistica.md
           - "3. O Que vem por 'AI'": aula-00/aprofundamento.md
           - "4. Atividades": aula-00/atividades.md
+
       - "Aula 1 — Workflow de ML e Regressão Linear":
           - Introdução:
               - Visão Geral: aula-01/index.md
@@ -98,21 +98,25 @@ nav:
               - "3. Outliers e Dados Suspeitos": aula-01/outliers.md
               - "4. Treinando o Modelo": aula-01/treinamento.md
               - "5. Leitura Complementar": aula-01/complementar.md
+
       - "Aula 2 — Classificação e Regressão Logística":
           - Visão Geral: aula-02/index.md
           - "1. O Problema de Classificação": aula-02/classificacao.md
           - "2. Regressão Logística e Sigmoide": aula-02/logistica.md
           - "3. Métricas e Trade-offs": aula-02/metricas.md
           - "4. Prática": aula-02/pratica.md
+
       - "Aula 3 — Otimização":
           - Visão Geral: aula-03/index.md
           - "1. Gradient Descent": aula-03/gradient-descent.md
           - "2. Prática": aula-03/pratica.md
+
       - "Aula 4 — Redes Neurais":
           - Visão Geral: aula-04/index.md
           - "1. Fundamentos": aula-04/introducao.md
           - "2. A Rede Neural": aula-04/estrutura_redes.md
           - Prática: aula-04/pratica_handout.md
+
       - "Aula 5 — Construção de Modelos":
           - Visão Geral: aula-05/index.md
           - "1. Construindo um MLP com TensorFlow/Keras": aula-05/construcao_modelos.md
